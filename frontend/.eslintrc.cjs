@@ -21,6 +21,22 @@ module.exports = {
     'no-unneeded-ternary': 'warn',
     'no-implicit-coercion': 'error',
     'no-else-return': 'warn',
-    'max-depth': ['warn', 4]
+    'max-depth': ['warn', 4],
+    'indent': [
+      'error',
+      'tab'
+    ],
+    'linebreak-style': [
+      'error',
+      'unix'
+    ],
+    'quotes': [
+      'error',
+      'single'
+    ],
+    'semi': [
+      'error',
+      'never'
+    ]
   },
 }
