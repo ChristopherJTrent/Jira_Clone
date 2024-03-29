@@ -37,6 +37,10 @@ module.exports = {
     'semi': [
       'error',
       'never'
-    ]
+    ],
+    'sort-imports': ['error', {
+      'ignoreCase': true,
+      'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none']
+    }]
   },
 }
