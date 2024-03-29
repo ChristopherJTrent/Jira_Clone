@@ -1,7 +1,10 @@
 import SessionForm from '../components/SessionForm.jsx'
+import '../assets/login-background.svg'
 
-export default function Session() {
+// eslint-disable-next-line react/prop-types
+export default function Session({type}) {
 	return (
-		<SessionForm />
+
+		<SessionForm type={type}/>
 	)
 }
