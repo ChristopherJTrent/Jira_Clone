@@ -1,6 +1,6 @@
 import {createBrowserRouter} from 'react-router-dom'
-import Layout from './layout.jsx'
 import Frontpage from './pages/frontpage.jsx'
+import Layout from './layout.jsx'
 import Session from './pages/session.jsx'
 const router = createBrowserRouter([
 	{
