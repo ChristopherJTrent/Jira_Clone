@@ -1,0 +1,38 @@
+#bg-container-1, #bg-container-2, #bg-container-3{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100vw;
+	height: 100vh;
+	z-index: -100;
+	
+}
+#bg-container-1 {
+	top: 0px;
+	left: 0px;
+	transition: visibility 0s 0.25s, opacity 0.25s;
+	visibility: visible;
+	opacity: 1;
+	&.transparent{
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+#bg-container-2 {
+	width: calc(100vw / 2);
+	left: calc(-1 * 100vw / 2);
+	transition: left 0.5s 0.25s;
+	&.visible {
+		left: 0px;
+	}
+}
+
+#bg-container-3 {
+	width: calc(100vw / 2);
+	left: unset;
+	right: calc(-1 * 100vw / 2);
+	transition: right 0.5s 0.25s;
+	&.visible {
+		right: 0px;
+	}
+}
