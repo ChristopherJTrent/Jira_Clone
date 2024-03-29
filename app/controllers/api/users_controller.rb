@@ -11,7 +11,7 @@ module Api
 
       render json: @user.errors.full_messages, status: 422 unless @user.save
 
-      login(@user)
+      log_in(@user)
       render :show
     end
 

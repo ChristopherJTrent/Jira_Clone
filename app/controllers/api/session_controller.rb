@@ -3,7 +3,7 @@
 module Api
   # handles login and logout
   class SessionController < ApplicationController
-    def show
+    def index
       @user = current_user
       if @user
         render 'api/users/show'

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_secure_password
   before_validation :ensure_session_token
 
-  validates :email, presence: true, uniqueness: true, email: true
+  validates :email, presence: true, uniqueness: true # , email: true
   validate :password_validator
 
   def self.find_by_credentials(email, password)
