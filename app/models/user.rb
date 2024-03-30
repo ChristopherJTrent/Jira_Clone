@@ -47,24 +47,21 @@ class User < ApplicationRecord
   end
 
   def validate_password_digit
-    return if /.*\d/ =~ password
+    return 1 if /.*\d/ =~ password
 
-    errors.add :password, :reqiures_number,
-               message: 'password must contain a number'
+    0
   end
 
   def validate_password_lowercase
-    return if /.*[a-z]/ =~ password
+    return 1 if /.*[a-z]/ =~ password
 
-    errors.add :password, :requires_lowercase,
-               message: 'password must include at least one lowercase letter'
+    0
   end
 
   def validate_password_uppercase
-    return if /.*[A-Z]/ =~ password
+    return 1 if /.*[A-Z]/ =~ password
 
-    errors.add :password, :requires_uppercase,
-               message: 'password must include at least one capital letter'
+    0
   end
 
   def validate_password_special
