@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { restoreSession } from './utils/csrfUtils.js'
 import router from './router.jsx'
 import { RouterProvider } from 'react-router-dom'
-import './index.css'
+import './main.css'
 
 const initializeApp = () => {
 	ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom'
-import './Layout.css'
+import './layout.css'
 
 function Layout() {
 	return (
 		<>
-			<h1>Jira Clone</h1>
 			<Outlet />
 		</>
 	)
