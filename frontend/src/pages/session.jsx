@@ -9,7 +9,7 @@ import './session.css'
 export default function Session({type}) {
 	const [flowStage, setFlowStage] = useState(0)
 
-	return (<>
+	return (<div id='auth-container'>
 		<div id='bg-container-1' className={'fullscreen' + (flowStage === 0 ? '' : ' transparent') }>
 			<Background />
 		</div>
@@ -20,6 +20,6 @@ export default function Session({type}) {
 			<RegistrationRight />
 		</div>
 		<SessionForm type={type} flowStage={flowStage} setFlowStage={setFlowStage}/>
-	</>
+	</div>
 	)
 }

@@ -30,7 +30,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 			onChange={e => setEmail(e.target.value)}
 			disabled={flowStage > 0} />
 		<label htmlFor="session-username" hidden={flowStage === 0 || type === 'login'}>
-			Full name <span className='red'>*</span>
+			Full name <span className='red'>*</span> <br />
 			<input type='text'
 				placeholder='Enter full name'
 				id='session-username'
@@ -38,7 +38,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 				onChange={e => setUsername(e.target.value)}/>
 		</label>
 		<label htmlFor="session-password" hidden={flowStage === 0}>
-			Password <span className='red'>*</span>
+			Password <span className='red'>*</span> <br />
 			<input type="password" 
 				placeholder={type==='register' ? 'Create password' :'Enter password'}
 				id='session-password'
