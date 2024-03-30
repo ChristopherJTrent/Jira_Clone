@@ -32,18 +32,28 @@ class User < ApplicationRecord
     # this allows for a "correctHorseBatteryStaple" password to be valid
     return if password.length > 16 && /.*[A-Z]/ =~ password
 
-    validate_password_length
-    validate_password_digit
-    validate_password_lowercase
-    validate_password_uppercase
-    validate_password_special
+    return if calculate_password_score > 5
+
+    errors.add :password, :insufficient_security, message: 'password score must be greater than 5'
+  end
+
+  def calculate_password_score
+    password_score = 0
+    password_score += validate_password_length
+    password_score += validate_password_digit
+    password_score += validate_password_lowercase
+    password_score += validate_password_uppercase
+    password_score + validate_password_special
   end
 
   def validate_password_length
-    return if password.length > 8
-
-    errors.add :password, :too_short,
-               message: 'password must be more than 8 characters'
+    if password.length > 8
+      errors.add :password, :too_short,
+                 message: 'password must be more than 8 characters'
+      0
+    else
+      (password.length - 4) / 4
+    end
   end
 
   def validate_password_digit
