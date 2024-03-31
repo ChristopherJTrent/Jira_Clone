@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
 import AppleIcon from '../assets/apple-logo.svg?react'
+import { createUser } from '../store/reducers/user.js'
 import GoogleIcon from '../assets/google-logo.svg?react'
 import JiraIcon from '../assets/jira-logo.svg?react'
 import { Link } from 'react-router-dom'
 import MicrosoftIcon from '../assets/microsoft-logo.svg?react'
 import PasswordValidatorDisplay from './passwordValidatorDisplay.jsx'
 import SlackIcon from '../assets/slack-logo.svg?react'
+import {useDispatch} from 'react-redux'
 import './SessionForm.css'
 // eslint-disable-next-line react/prop-types
 export default function SessionForm({type, flowStage, setFlowStage}) {
 
+	const dispatch = useDispatch()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -32,8 +35,10 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 
 	const handleClick = (e) => {
 		if (flowStage === 0) {
-			e.preventDefault()
-			setFlowStage(1)
+			if (document.getElementById('session-email')?.checkValidity()){
+				e.preventDefault()
+				setFlowStage(1)
+			}
 		}
 	}
 
@@ -48,8 +53,15 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 	}
 
 
-	const handleSubmit = (e) => {}
-	return (<form>
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		dispatch(createUser({
+			username,
+			email,
+			password
+		}))
+	}
+	return (<form onSubmit={handleSubmit}>
 		<JiraIcon />
 		{type === 'register' && <h3>Sign up to continue</h3>
 							|| <h3>Log in to continue</h3>}
@@ -84,9 +96,13 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 			<button id='continue-button' onClick={handleClick}>
 				{
 					(
-						flowStage === 0
-					) && 'Continue'
-						|| 'Login'
+						flowStage === 0 && 'Continue'
+					) 
+					|| (
+						type ==='login'
+						&& 'Login'
+						|| 'Register'
+					) 
 				}
 			</button>
 		</section>
