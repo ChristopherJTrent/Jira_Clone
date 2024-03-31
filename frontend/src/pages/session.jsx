@@ -5,21 +5,28 @@ import SessionForm from '../components/SessionForm.jsx'
 import { useState } from 'react'
 import './session.css'
 
+
 // eslint-disable-next-line react/prop-types
 export default function Session({type}) {
 	const [flowStage, setFlowStage] = useState(0)
 
+	const shouldChangeBackground = () => {
+		return flowStage === 0 && type !== 'login'
+	}
+
 	return (<div id='auth-container'>
-		<div id='bg-container-1' className={'fullscreen' + (flowStage === 0 ? '' : ' transparent') }>
+		<div id='bg-container-1' className={'fullscreen' + (shouldChangeBackground() ? '' : ' transparent') }>
 			<Background />
 		</div>
-		<div id='bg-container-2' className={'leftpanel' + (flowStage === 0 ? '' : ' visible') }>
+		<div id='bg-container-2' className={'leftpanel' + (shouldChangeBackground() ? '' : ' visible') }>
 			<RegistrationLeft />
 		</div>
-		<div id='bg-container-3' className={'rightpanel' + (flowStage === 0 ? '' : ' visible') }>
+		<div id='bg-container-3' className={'rightpanel' + (shouldChangeBackground() ? '' : ' visible') }>
 			<RegistrationRight />
 		</div>
-		<SessionForm type={type} flowStage={flowStage} setFlowStage={setFlowStage}/>
+		<div id='whitebox-container'>
+			<SessionForm type={type} flowStage={flowStage} setFlowStage={setFlowStage}/>
+		</div>
 	</div>
 	)
 }
