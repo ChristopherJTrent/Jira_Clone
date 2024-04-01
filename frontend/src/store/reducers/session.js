@@ -1,4 +1,5 @@
 import { deleteSession, postSession } from '../../utils/apiUtils.js'
+import { receiveUser } from './user.js'
 
 export const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
 export const DELETE_CURRENT_USER = 'session/DELETE_CURRENT_USER'
@@ -16,19 +17,26 @@ export const deleteCurrentUser = () => (
 	}
 )
 
-export const logIn = (user) => async dispatch => {
+export const logIn = (user) => async (dispatch, getState) => {
 	const response = await postSession({email: user.email, password: user.password})
-
 	if (response.ok) {
 		const data = (await response.json()).user
+		if (data.id == null) throw new Error('received invalid response from server')
+		if(data.id && !(getState()?.users[data.id])) {
+			const userResponse = await fetch(`/api/users/${data.id}`)
+			const userData = await userResponse.json()
+			dispatch(receiveUser(await userData.user))
+		}
 		return dispatch(setCurrentUser(data.id))
 	}
+	throw new Error()
 } 
 
-export const logOut = () => async dispatch => {
+export const logOut = () => async (dispatch) => {
 	const response = await deleteSession()
 
 	if (response.ok) {
+		
 		return dispatch(deleteCurrentUser())
 	}
 }

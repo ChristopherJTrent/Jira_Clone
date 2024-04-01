@@ -27,7 +27,8 @@ export const createUser = (user) => async dispatch => {
 	const response = await postUser(user)
 
 	if (response.ok) {
-		return dispatch(receiveUser(await response.json()))
+		const data = await response.json()
+		return dispatch(receiveUser(data.user))
 	}
 }
 

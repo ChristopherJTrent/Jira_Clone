@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import AppleIcon from '../assets/apple-logo.svg?react'
 import { createUser } from '../store/reducers/user.js'
@@ -35,10 +35,18 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		}
 	}, [password])
 
+	const loginDemo = (e) => {
+		e.preventDefault()
+		dispatch(logIn({email: 'demo@example.com', password: '1Demonstration!'}))
+			.then(()=> {
+				navigate('/home')
+			})
+	}
+
 	const handleClick = (e) => {
 		if (flowStage === 0) {
-			e.preventDefault()
 			if (document.getElementById('session-email')?.checkValidity()){
+				e.preventDefault()
 				setFlowStage(1)
 			}
 		} else {
@@ -68,13 +76,13 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		alert('password reset isn\'t implemented yet, sorry.')
 	}
 
-
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (type === 'login') {
-			dispatch(logIn({email, password})).then(() => {
+			dispatch(logIn({email, password})).then((returnVal) => {
+				
 				navigate('/home')
-			})
+			}).catch(() => {})
 		} else {
 			dispatch(createUser({
 				username,
@@ -136,11 +144,8 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		</section>
 		<section id='sso'>
 			Or continue with:
-			<button onClick={ssoRescue}>
-				<span className='svg-container'>
-					<GoogleIcon />
-				</span>
-				Google
+			<button onClick={loginDemo}>
+				Demo Login
 			</button>
 			<button onClick={ssoRescue}>
 				<span className='svg-container'>
