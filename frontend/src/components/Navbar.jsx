@@ -1,7 +1,7 @@
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import JiraHeader from '../assets/jira-header.svg?react'
 import { logOut } from '../store/reducers/session.js'
-import { NavLink, useNavigate } from 'react-router-dom'
 import { userIdSelector } from '../store/selectors/session.js'
 import './Navbar.css'
 export default function Navbar() {

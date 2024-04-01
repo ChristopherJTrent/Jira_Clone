@@ -1,8 +1,7 @@
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import AppleIcon from '../assets/apple-logo.svg?react'
 import { createUser } from '../store/reducers/user.js'
-import GoogleIcon from '../assets/google-logo.svg?react'
 import JiraIcon from '../assets/jira-logo.svg?react'
 import { logIn } from '../store/reducers/session.js'
 import MicrosoftIcon from '../assets/microsoft-logo.svg?react'
@@ -80,8 +79,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (type === 'login') {
-			dispatch(logIn({email, password})).then((returnVal) => {
-
+			dispatch(logIn({email, password})).then(() => {
 				navigate('/home')
 			}).catch(() => {
 				setHasError(true)
