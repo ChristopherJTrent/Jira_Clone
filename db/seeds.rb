@@ -15,6 +15,5 @@ ApplicationRecord.transaction do
   %w[users].each do |table_name|
     ApplicationRecord.connection.reset_pk_sequence!(table_name)
   end
-  
   User.create!(username: 'Demo User', email: 'demo@example.com', password: '1Demonstration!')
 end
