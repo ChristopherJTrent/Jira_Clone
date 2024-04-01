@@ -1,14 +1,24 @@
+import { useEffect, useState } from 'react'
 import Background from '../assets/login-background.svg?react'
 import RegistrationLeft from '../assets/register-left.svg?react'
 import RegistrationRight from '../assets/register-right.svg?react'
 import SessionForm from '../components/SessionForm.jsx'
-import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
+import { userIdSelector } from '../store/selectors/session.js'
+import {useSelector} from 'react-redux'
 import './session.css'
 
 
 // eslint-disable-next-line react/prop-types
 export default function Session({type}) {
 	const [flowStage, setFlowStage] = useState(0)
+	const navigate = useNavigate()
+
+	const currentUserId = useSelector(userIdSelector)
+
+	useEffect(() => {
+		if(currentUserId) navigate('/home')
+	}, [navigate, currentUserId])
 
 	const shouldChangeBackground = () => {
 		return flowStage === 0 && type !== 'login'
