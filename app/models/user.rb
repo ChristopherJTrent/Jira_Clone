@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true # , email: true
   validate :password_validator
 
+  has_many :projects,
+           inverse_of: 'owner',
+           dependent: :destroy
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email:)
     return unless user&.authenticate(password)

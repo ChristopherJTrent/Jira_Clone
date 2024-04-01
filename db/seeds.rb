@@ -10,10 +10,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 ApplicationRecord.transaction do
-  User.destroy_all
+  [User, Project].each(&:destroy_all)
 
-  %w[users].each do |table_name|
+  %w[users projects].each do |table_name|
     ApplicationRecord.connection.reset_pk_sequence!(table_name)
   end
-  User.create!(username: 'Demo User', email: 'demo@example.com', password: '1Demonstration!')
+  demo = User.create!(username: 'Demo User', email: 'demo@example.com', password: '1Demonstration!')
+  Project.create!(title: 'demo project',
+                  description: 'this is a demo project to show the full layout of the site',
+                  owner: demo)
+  Project.create!(title: 'demo project 2',
+                  description: 'this is another demo project to show how having multiple projects changes the site display',
+                  owner: demo)
 end
