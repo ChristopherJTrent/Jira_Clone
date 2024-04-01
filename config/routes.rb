@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create]
-    resources :session, only: %i[index create destroy]
+    resources :session, only: %i[index create]
+    delete 'session', to: 'session#destroy'
   end
 end

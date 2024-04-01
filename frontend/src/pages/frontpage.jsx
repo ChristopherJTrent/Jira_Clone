@@ -1,4 +1,8 @@
 
 export default function FrontPage() {
-	return <></>
+	return 	(
+		<>
+			
+		</>
+	)
 }

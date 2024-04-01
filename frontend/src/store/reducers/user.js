@@ -35,7 +35,7 @@ export default function userReducer(state = {}, action) {
 
 	switch (action.type) {
 	case RECEIVE_USER:
-		return {...state, [action.user.id]: action.user}
+		return {...state, [action.user['id']]: action.user}
 	case RECEIVE_USERS:
 		return {...state,
 			...(action.users.reduce((a, e) => ({...a, [e.id]: e}), {}))

@@ -13,10 +13,13 @@ module Api
     end
 
     def create
-      @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+      @user = User.find_by_credentials(
+        params[:session]&.[](:email),
+        params[:session]&.[](:password)
+      )
       if @user
         log_in(@user)
-        render json: :ok
+        render 'api/users/show'
       else
         render json: { errors: ['user not found'] }, status: 401
       end

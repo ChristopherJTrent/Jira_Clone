@@ -3,11 +3,13 @@
  */
 export const restoreSession = async () => {
 	const res = await fetch('/api/session')
-	const token = res.headers.get('X-Csrf-Token')
-	sessionStorage.setItem('X-CSRF-Token', token)
-
-	sessionStorage.setItem('currentUser', 
-		JSON.stringify((await res.json()).user))
+	if (res.ok){
+		const token = res.headers.get('X-Csrf-Token')
+		sessionStorage.setItem('X-CSRF-Token', token)
+	
+		sessionStorage.setItem('currentUser', 
+			JSON.stringify((await res.json()).user))
+	}
 }
 /**
  * 
@@ -15,6 +17,7 @@ export const restoreSession = async () => {
  * @param {RequestInit!} options
  */
 export const csrfFetch = async (url, options) => {
+	
 	options.method ??= 'GET'
 	options.headers ??= {}
 	//Method being case-insensitive isn't universally accepted.

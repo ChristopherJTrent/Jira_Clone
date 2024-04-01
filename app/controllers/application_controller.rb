@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::API
   include ActionController::RequestForgeryProtection
 
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
   before_action :snake_case_params
   before_action :attach_authenticity_token
 
@@ -45,6 +45,6 @@ class ApplicationController < ActionController::API
   end
 
   def attach_authenticity_token
-    headers['X-CSRF-Token'] = masked_authenticity_token
+    headers['X-CSRF-Token'] = form_authenticity_token
   end
 end

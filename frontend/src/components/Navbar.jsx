@@ -15,7 +15,7 @@ export default function Navbar() {
 			<li className="floatRight">
 				{currentUserId == null 
 				&& <NavLink to='/login'>Sign In</NavLink>
-				|| <button onClick={dispatch(logOut())}>
+				|| <button onClick={() => dispatch(logOut())}>
 					Log Out
 				</button>
 				}		
