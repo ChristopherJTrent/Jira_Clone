@@ -9,3 +9,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+ApplicationRecord.transaction do
+  User.destroy_all
+
+  %w[users].each do |table_name|
+    ApplicationRecord.connection.reset_pk_sequence!(table_name)
+  end
+  
+  User.create!(username: 'Demo User', email: 'demo@example.com', password: '1Demonstration!')
+end

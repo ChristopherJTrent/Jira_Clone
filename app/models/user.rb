@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def validate_password_length
-    if password.length > 8
+    if password.length < 8
       errors.add :password, :too_short,
                  message: 'password must be more than 8 characters'
       0
@@ -75,10 +75,9 @@ class User < ApplicationRecord
   end
 
   def validate_password_special
-    return if /.*[!@$#%^&*,.;:|]/ =~ password
+    return 1 if /.*[!@$#%^&*,.;:|]/ =~ password
 
-    errors.add :password, :requires_special_char,
-               message: 'password must include at least one special character (!@$#%^&*,.;:|)'
+    0
   end
 
   def generate_unique_session_token
