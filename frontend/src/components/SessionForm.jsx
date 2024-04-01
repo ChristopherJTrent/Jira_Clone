@@ -1,15 +1,15 @@
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import AppleIcon from '../assets/apple-logo.svg?react'
 import { createUser } from '../store/reducers/user.js'
 import GoogleIcon from '../assets/google-logo.svg?react'
 import JiraIcon from '../assets/jira-logo.svg?react'
-import { Link, useNavigate } from 'react-router-dom'
+import { logIn } from '../store/reducers/session.js'
 import MicrosoftIcon from '../assets/microsoft-logo.svg?react'
 import PasswordValidatorDisplay from './passwordValidatorDisplay.jsx'
 import SlackIcon from '../assets/slack-logo.svg?react'
 import {useDispatch} from 'react-redux'
 import './SessionForm.css'
-import { logIn } from '../store/reducers/session.js'
 // eslint-disable-next-line react/prop-types
 export default function SessionForm({type, flowStage, setFlowStage}) {
 
