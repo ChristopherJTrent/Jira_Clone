@@ -97,7 +97,8 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 					placeholder='Enter full name'
 					id='session-username'
 					value={username}
-					onChange={e => setUsername(e.target.value)}/>
+					onChange={e => setUsername(e.target.value)}
+					required={type === 'register'} />
 			</label>
 			<label htmlFor="session-password" hidden={flowStage === 0}>
 				Password <span className='red'>*</span> <br />
@@ -105,7 +106,8 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 					placeholder={type==='register' ? 'Create password' :'Enter password'}
 					id='session-password'
 					value={password}
-					onChange={e => setPassword(e.target.value)}/>
+					onChange={e => setPassword(e.target.value)}
+					required={true}/>
 			</label>
 			{(type === 'register' && flowStage === 1) 
 				&& <PasswordValidatorDisplay score={passwordScore} />}
