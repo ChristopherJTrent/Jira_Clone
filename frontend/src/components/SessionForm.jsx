@@ -20,6 +20,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 	const [password, setPassword] = useState('')
 	const [username, setUsername] = useState('')
 	const [passwordScore, setPasswordScore] = useState(0)
+	const [hasError, setHasError] = useState(false)
 
 	useEffect(() => {
 		if (password.length === 0) setPasswordScore(0)
@@ -80,9 +81,11 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		e.preventDefault()
 		if (type === 'login') {
 			dispatch(logIn({email, password})).then((returnVal) => {
-				
+
 				navigate('/home')
-			}).catch(() => {})
+			}).catch(() => {
+				setHasError(true)
+			})
 		} else {
 			dispatch(createUser({
 				username,
@@ -127,6 +130,9 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 					onChange={e => setPassword(e.target.value)}
 					required={true}/>
 			</label>
+			<p className={'red' + (hasError ? '' : ' hidden')}>
+				Invalid email or password
+			</p>
 			{(type === 'register' && flowStage === 1) 
 				&& <PasswordValidatorDisplay score={passwordScore} />}
 			<button id='continue-button' onClick={handleClick}>
