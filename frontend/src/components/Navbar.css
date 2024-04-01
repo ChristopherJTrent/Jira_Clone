@@ -1,0 +1,19 @@
+nav {
+	background-color: #f4f5f7;
+	display: flex;
+	justify-content: center;
+	& > ul {
+		display: flex;
+		flex-direction: row;
+		list-style-type: none;
+		height: 72px;
+		margin: 0px;
+		align-items: center;
+		& > li {
+			height: min-content;
+			& > svg {
+				height: 32.85px;
+			}
+		}
+	}
+}
