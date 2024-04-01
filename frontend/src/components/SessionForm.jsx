@@ -62,7 +62,9 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		}))
 	}
 	return (<form onSubmit={handleSubmit}>
-		<JiraIcon />
+		<Link to='/'>
+			<JiraIcon />
+		</Link>
 		{type === 'register' && <h3>Sign up to continue</h3>
 							|| <h3>Log in to continue</h3>}
 		<section id='email'>
