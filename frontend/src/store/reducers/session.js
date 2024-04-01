@@ -21,7 +21,6 @@ export const logIn = (user) => async dispatch => {
 
 	if (response.ok) {
 		const data = (await response.json()).user
-		console.log(data)
 		return dispatch(setCurrentUser(data.id))
 	}
 } 

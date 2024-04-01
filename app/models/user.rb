@@ -9,9 +9,7 @@ class User < ApplicationRecord
   validate :password_validator
 
   def self.find_by_credentials(email, password)
-    print email
     user = User.find_by(email:)
-    print user || 'null'
     return unless user&.authenticate(password)
 
     user
