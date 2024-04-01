@@ -20,7 +20,7 @@ export const logIn = (user) => async dispatch => {
 	const response = await postSession({email: user.email, password: user.password})
 
 	if (response.ok) {
-		dispatch(setCurrentUser(user.id))
+		return dispatch(setCurrentUser(user.id))
 	}
 } 
 
@@ -28,7 +28,7 @@ export const logOut = () => async dispatch => {
 	const response = await deleteSession()
 
 	if (response.ok) {
-		dispatch(deleteCurrentUser())
+		return dispatch(deleteCurrentUser())
 	}
 }
 
