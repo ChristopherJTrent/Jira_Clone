@@ -3,16 +3,18 @@ import AppleIcon from '../assets/apple-logo.svg?react'
 import { createUser } from '../store/reducers/user.js'
 import GoogleIcon from '../assets/google-logo.svg?react'
 import JiraIcon from '../assets/jira-logo.svg?react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import MicrosoftIcon from '../assets/microsoft-logo.svg?react'
 import PasswordValidatorDisplay from './passwordValidatorDisplay.jsx'
 import SlackIcon from '../assets/slack-logo.svg?react'
 import {useDispatch} from 'react-redux'
 import './SessionForm.css'
+import { logIn } from '../store/reducers/session.js'
 // eslint-disable-next-line react/prop-types
 export default function SessionForm({type, flowStage, setFlowStage}) {
 
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -69,11 +71,19 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(createUser({
-			username,
-			email,
-			password
-		}))
+		if (type === 'login') {
+			dispatch(logIn({email, password})).then(() => {
+				navigate('/')
+			})
+		} else {
+			dispatch(createUser({
+				username,
+				email,
+				password
+			})).then(() => {
+				navigate('/')
+			})
+		}
 	}
 	return (<form onSubmit={handleSubmit}>
 		<Link to='/'>
