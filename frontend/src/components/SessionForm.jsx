@@ -35,9 +35,23 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 
 	const handleClick = (e) => {
 		if (flowStage === 0) {
+			e.preventDefault()
 			if (document.getElementById('session-email')?.checkValidity()){
-				e.preventDefault()
 				setFlowStage(1)
+			}
+		} else {
+			switch(type) {
+			case 'register':
+				if (!document.getElementById('session-username')
+					?.checkValidity()){ 
+					e.preventDefault()
+				}
+			// eslint-disable-next-line no-fallthrough
+			case 'login':
+				if (!document.getElementById('session-password')
+					?.checkValidity()) {
+					e.preventDefault()
+				}
 			}
 		}
 	}
