@@ -20,7 +20,8 @@ export const logIn = (user) => async dispatch => {
 	const response = await postSession({email: user.email, password: user.password})
 
 	if (response.ok) {
-		const data = await response.json()
+		const data = (await response.json()).user
+		console.log(data)
 		return dispatch(setCurrentUser(data.id))
 	}
 } 

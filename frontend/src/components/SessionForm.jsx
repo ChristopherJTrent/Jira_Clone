@@ -73,7 +73,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		e.preventDefault()
 		if (type === 'login') {
 			dispatch(logIn({email, password})).then(() => {
-				navigate('/')
+				navigate('/home')
 			})
 		} else {
 			dispatch(createUser({
