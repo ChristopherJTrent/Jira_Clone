@@ -17,5 +17,30 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'no-var': 'warn',
+    'no-unneeded-ternary': 'warn',
+    'no-implicit-coercion': 'error',
+    'no-else-return': 'warn',
+    'max-depth': ['warn', 4],
+    'indent': [
+      'error',
+      'tab'
+    ],
+    'linebreak-style': [
+      'error',
+      'unix'
+    ],
+    'quotes': [
+      'error',
+      'single'
+    ],
+    'semi': [
+      'error',
+      'never'
+    ],
+    'sort-imports': ['error', {
+      'ignoreCase': true,
+      'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none']
+    }]
   },
 }
