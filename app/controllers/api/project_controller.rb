@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 module Api
+  # controller responsible for serving projects
   class ProjectController < ApplicationController
-    def index 
-      @projects = Project.all()
-      render json: @projects
+    def index
+      @projects = current_user.associated_projects
+      render :index
     end
-    
+
     def show
       @project = Project.find_by(id: params[:id])
       render :show
