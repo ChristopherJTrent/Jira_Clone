@@ -31,7 +31,11 @@ export default function ProjectTable() {
 			<td>{post.title}</td>
 			<td>{post.key}</td>
 			<td>Team-managed software</td>
-			<td><AutogenProfile name={ownerName ?? 'test user'} /> {ownerName ?? 'test user'}</td>
+			<td><AutogenProfile name={ownerName ?? 'test user'} /> 
+				<span className='leadName'>
+					{ownerName ?? 'test user'}
+				</span>
+			</td>
 			<td><MenuDots /></td>
 		</tr>
 	}
