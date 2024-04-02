@@ -1,3 +1,29 @@
 .projectsContainer {
 	margin: 0px 40px;
 }
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#createProjectButton {
+	background: #0C66E4;
+	border: none;
+	color: #FFFFFF;
+	border-radius: 3px;
+	height: 2.28571em;
+	padding: 0px 10px;
+	font-weight: 500;
+	font-family: inherit;
+	transition: background 0.1s ease-out, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+	&:hover{
+		background-color: #05C;
+		transition-duration: 0s, 0.15s;
+	}
+	&:active {
+		background-color: #09326C;
+		transition-duration: 0s, 0s;
+	}
+}
