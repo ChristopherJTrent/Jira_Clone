@@ -39,7 +39,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		e.preventDefault()
 		dispatch(logIn({email: 'demo@example.com', password: '1Demonstration!'}))
 			.then(()=> {
-				navigate('/home')
+				navigate('/projects')
 			})
 	}
 
@@ -80,7 +80,7 @@ export default function SessionForm({type, flowStage, setFlowStage}) {
 		e.preventDefault()
 		if (type === 'login') {
 			dispatch(logIn({email, password})).then(() => {
-				navigate('/home')
+				navigate('/projects')
 			}).catch(() => {
 				setHasError(true)
 			})
