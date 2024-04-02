@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux'
 import AutogenProfile from '../components/AutogenProfile.jsx'
 import { fetchProjects } from '../store/reducers/projects.js'
@@ -10,7 +11,7 @@ import { useEffect } from 'react'
 
 import './ProjectTable.css'
 
-export default function ProjectTable() {
+export default function ProjectTable({searchTerm}) {
 
 	const dispatch = useDispatch()
 	const posts = useSelector(projectSelector)
@@ -58,6 +59,12 @@ export default function ProjectTable() {
 		<tbody>
 			{
 				posts.map((post, i) => {
+					if(searchTerm) {
+						if(! post.title.toLowerCase()
+							.includes(searchTerm.toLowerCase())) {
+							return <></>
+						}
+					}
 					if (!users[post.ownerId]) {
 						dispatch(fetchUser(post.ownerId))
 							.then(generateTableRow(post, i))

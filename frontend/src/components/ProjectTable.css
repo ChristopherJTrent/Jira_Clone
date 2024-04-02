@@ -33,7 +33,13 @@ table {
 thead, tbody, tfoot {
 	border-bottom: 2px solid #091E4224;
 }
+th:nth-of-type(3) {
+	width: 19rem;
+}
 
+th:last-of-type, td:last-of-type {
+	padding: 4px 8px;
+}
 .leadName {
 	vertical-align: middle;
 	margin: 2px;
