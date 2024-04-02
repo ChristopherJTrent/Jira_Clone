@@ -31,6 +31,16 @@ export const fetchProjects = () => async dispatch => {
 	}
 }
 
+export const postProject = (project) => async dispatch => {
+	const response = await csrfFetch('/api/project', {
+		method: 'POST',
+		body: JSON.stringify(project)
+	})
+	if (response.ok) {
+		return dispatch(receiveProject(await response.json()))
+	}
+}
+
 
 export default function projectsReducer(state = {}, action) {
 	switch(action.type) {
