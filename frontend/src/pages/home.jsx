@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from '../store/reducers/projects.js'
+import { fetchUser } from '../store/reducers/user.js'
 import HeaderStar from '../assets/header-star.svg?react'
+import MenuDots from '../assets/menu-dots.svg?react'
 import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
 import { useEffect } from 'react'
+import AutogenProfile from '../components/AutogenProfile.jsx'
 
 export default function Home() {
 	const dispatch = useDispatch()
@@ -16,6 +19,20 @@ export default function Home() {
 
 	console.log(posts)
 	console.log(users)
+
+	const generateTableRow = (post, i) => {
+		const ownerName = users[post.ownerId]?.username
+		return <tr key={i}>
+			<td>
+				<Star />
+			</td>
+			<td>{post.title}</td>
+			<td>{post.key}</td>
+			<td>Team-managed software</td>
+			<td><AutogenProfile name={ownerName ?? 'test user'} /> {ownerName ?? 'test user'}</td>
+			<td><MenuDots /></td>
+		</tr>
+	}
 
 	return <table>
 		<thead>
@@ -32,17 +49,11 @@ export default function Home() {
 			{
 				posts.map((post, i) => {
 					if (!users[post.ownerId]) {
-						dispatch(fetchUser())
+						dispatch(fetchUser(post.ownerId))
+							.then(generateTableRow(post, i))
+					} else {
+						return generateTableRow(post, i)
 					}
-					return <tr key={i}>
-						<td>
-							<Star />
-						</td>
-						<td>{post.title}</td>
-						<td>{post.key}</td>
-						<td>Team-managed software</td>
-						<td>{users[post.ownerId]?.username}</td>
-					</tr>
 				})
 			}
 		</tbody>
