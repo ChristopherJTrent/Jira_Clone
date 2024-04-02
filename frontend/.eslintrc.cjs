@@ -38,6 +38,7 @@ module.exports = {
       'error',
       'never'
     ],
+    'react/prop-types': 'off',
     'sort-imports': ['error', {
       'ignoreCase': true,
       'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none']
