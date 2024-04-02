@@ -44,6 +44,7 @@ th:last-of-type, td:last-of-type {
 	vertical-align: middle;
 	margin: 2px;
 }
-td {
-
+td:first-of-type {
+	width: 24px;
+	height: 24px;
 }

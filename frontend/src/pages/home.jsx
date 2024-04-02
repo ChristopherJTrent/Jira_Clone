@@ -1,23 +1,20 @@
-import CreateProjectModal from '../components/CreateProjectModal.jsx'
 import ProjectTable from '../components/ProjectTable.jsx'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './home.css'
 
 export default function Home() {
+	const navigate = useNavigate()
 	const [searchTerm, setSearchTerm] = useState('')
-
 	const clearSearch = (e) => {
 		e.stopPropagation()
 		setSearchTerm('')
 	}
  
 	return <div className='projectsContainer'>
-		<div className='modalContainer'>
-			<CreateProjectModal />
-		</div>
 		<div className='headerContainer'>
 			<h3>Projects</h3>
-			<button id='createProjectButton'>Create Project</button>
+			<button id='createProjectButton' onClick={() => navigate('/projects/new')}>Create Project</button>
 		</div>
 		<div id='searchContainer'>
 			<span id='searchBox'>

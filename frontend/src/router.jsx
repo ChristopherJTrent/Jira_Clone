@@ -1,4 +1,5 @@
 import {createBrowserRouter, Navigate, Outlet} from 'react-router-dom'
+import CreateProject from './pages/CreateProject.jsx'
 import Frontpage from './pages/frontpage.jsx'
 import Home from './pages/home.jsx'
 import Layout from './layout.jsx'
@@ -14,8 +15,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'projects',
-				element: <Home />
-			}
+				element: <Home />,
+			},
 		]
 	},
 	{
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
 			{
 				path: 'register',
 				element: <Session type='register' />
+			},
+			{
+				path: 'projects/new',
+				element: <CreateProject />
 			}
 		]
 	},
