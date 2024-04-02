@@ -1,6 +1,6 @@
-
-import { useState } from 'react'
+import CreateProjectModal from '../components/CreateProjectModal.jsx'
 import ProjectTable from '../components/ProjectTable.jsx'
+import { useState } from 'react'
 import './home.css'
 
 export default function Home() {
@@ -12,6 +12,9 @@ export default function Home() {
 	}
  
 	return <div className='projectsContainer'>
+		<div className='modalContainer'>
+			<CreateProjectModal />
+		</div>
 		<div className='headerContainer'>
 			<h3>Projects</h3>
 			<button id='createProjectButton'>Create Project</button>
@@ -33,13 +36,6 @@ export default function Home() {
 				}
 			</span>
 		</div>
-		<ProjectTable />
+		<ProjectTable searchTerm={searchTerm}/>
 	</div>
-	
-	// <ul>
-	// 	{posts.map((v, i) => <li key={i}>
-	// 		<h1>{v.title}</h1>
-	// 		<p>{v.id}</p>
-	// 	</li>)}
-	// </ul>
 }
