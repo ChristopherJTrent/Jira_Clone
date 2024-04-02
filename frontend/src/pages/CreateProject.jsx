@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import Jira from '../assets/jira-header.svg?react'
 import Kanban from '../assets/kanban.svg?react'
 import TeamManaged from '../assets/team-managed.svg?react'
-import './CreateProject.css'
 import { useNavigate } from 'react-router-dom'
+import './CreateProject.css'
 
 export default function CreateProject() {
 	const navigate = useNavigate()
