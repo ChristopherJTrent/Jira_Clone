@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import AutogenProfile from '../components/AutogenProfile.jsx'
+import DeleteProjectConfirmationModal from './DeleteProjectConfirmationModal.jsx'
 import { fetchProjects } from '../store/reducers/projects.js'
 import { fetchUser } from '../store/reducers/user.js'
 import HeaderStar from '../assets/header-star.svg?react'
@@ -10,7 +11,6 @@ import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
 
 import './ProjectTable.css'
-import DeleteProjectConfirmationModal from './DeleteProjectConfirmationModal.jsx'
 
 export default function ProjectTable({searchTerm}) {
 
