@@ -7,8 +7,9 @@ module Api
       if current_user
         @projects = current_user.associated_projects
         render :index
-      else 
+      else
         render json: ['user is undefined.'], status: 403
+      end
     end
 
     def show
