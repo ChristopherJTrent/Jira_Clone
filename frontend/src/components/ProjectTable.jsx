@@ -10,6 +10,7 @@ import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
 
 import './ProjectTable.css'
+import DeleteProjectConfirmationModal from './DeleteProjectConfirmationModal.jsx'
 
 export default function ProjectTable({searchTerm}) {
 
@@ -19,20 +20,29 @@ export default function ProjectTable({searchTerm}) {
 
 	const [dropdownState, setDropdownState] = useState({enabled: false, posY: 0, posNegX: 0})
 	const [deleteConfirmation, setDeleteConfirmation] = useState(false)
+	const [dropdownPost, setDropdownPost] = useState()
 	/** @param {MouseEvent} event */
-	const handleOpenDropdown = (event) => {
+	const handleOpenDropdown = (post) => (event) => {
 		event.preventDefault()
 		/** @type {DOMRect} */
 		const rect = event.currentTarget.getBoundingClientRect()
 		setDropdownState({enabled: true, 
 			posY: rect.bottom + 8, 
 			posNegX: window.innerWidth - rect.right })
+		setDropdownPost(post)
+		console.log('inside handleOpenDropdown')
 	}
 
 	/** @param {MouseEvent} event */
 	const handleCloseDropdown = (event) => {
 		event.stopPropagation()
 		setDropdownState({...dropdownState, enabled: false})
+	}
+
+	const deleteModalHandler = (event) => {
+		event.stopPropagation()
+		setDropdownState({...dropdownState, enabled: false})
+		setDeleteConfirmation(true)
 	}
 	useEffect(() => {
 		dispatch(fetchProjects())
@@ -55,7 +65,7 @@ export default function ProjectTable({searchTerm}) {
 				</span>
 			</td>
 			<td>
-				<button onClick={handleOpenDropdown}>
+				<button onClick={handleOpenDropdown(post)}>
 					<MenuDots />
 				</button>
 			</td>
@@ -63,6 +73,10 @@ export default function ProjectTable({searchTerm}) {
 	}
 
 	return <>
+		<DeleteProjectConfirmationModal
+			enabled={deleteConfirmation}
+			setEnabled={setDeleteConfirmation}
+			post={dropdownPost} />
 		<div id='projectDropdownContainer' 
 			onClick={handleCloseDropdown} 
 			hidden={!dropdownState.enabled}>
@@ -73,8 +87,8 @@ export default function ProjectTable({searchTerm}) {
 					top: dropdownState.posY,
 					right: dropdownState.posNegX
 				}}>
-				<a onClick>
-
+				<a onClick={deleteModalHandler}>
+					Delete project
 				</a>
 			</div>
 		</div>
@@ -98,13 +112,13 @@ export default function ProjectTable({searchTerm}) {
 					posts.map((post, i) => {
 						if(searchTerm) {
 							if(! post.title.toLowerCase()
-							.includes(searchTerm.toLowerCase())) {
-						return <></>
-					}
+								.includes(searchTerm.toLowerCase())) {
+								return <></>
+							}
 						}
 						if (!users[post.ownerId]) {
 							dispatch(fetchUser(post.ownerId))
-							.then(generateTableRow(post, i))
+								.then(generateTableRow(post, i))
 						} else {
 							return generateTableRow(post, i)
 						}

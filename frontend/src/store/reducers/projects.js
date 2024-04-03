@@ -43,6 +43,15 @@ export const postProject = (project) => async dispatch => {
 	
 }
 
+export const deleteProject = (projectId) => async dispatch => {
+	const response = await csrfFetch(`/api/project/${projectId}`, {
+		method: 'DELETE',
+	})
+	if (response.ok) {
+		dispatch(removeProject(projectId))
+	}
+}
+
 
 export default function projectsReducer(state = {}, action) {
 	switch(action.type) {

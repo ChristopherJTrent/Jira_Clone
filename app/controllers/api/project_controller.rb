@@ -25,6 +25,19 @@ module Api
       end
     end
 
+    def destroy
+      puts params
+      p_id = params[:id]
+      puts p_id
+      project = Project.find_by(id: p_id)
+      if project&.owner_id == current_user.id
+        project.destroy
+        render json: :ok
+      else
+        puts "user #{current_user.id} attempted to delete project #{p_id} owned by #{project&.owner_id}"
+        render json: ['cannot delete another user\'s project'], status: 403
+      end
+    end
     private
 
     def project_params
