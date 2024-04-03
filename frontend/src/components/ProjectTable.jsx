@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 import AutogenProfile from '../components/AutogenProfile.jsx'
 import { fetchProjects } from '../store/reducers/projects.js'
 import { fetchUser } from '../store/reducers/user.js'
@@ -7,7 +8,6 @@ import HeaderStar from '../assets/header-star.svg?react'
 import MenuDots from '../assets/menu-dots.svg?react'
 import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
-import { useEffect } from 'react'
 
 import './ProjectTable.css'
 
@@ -17,6 +17,23 @@ export default function ProjectTable({searchTerm}) {
 	const posts = useSelector(projectSelector)
 	const users = useSelector(state => state.users)
 
+	const [dropdownState, setDropdownState] = useState({enabled: false, posY: 0, posNegX: 0})
+	const [deleteConfirmation, setDeleteConfirmation] = useState(false)
+	/** @param {MouseEvent} event */
+	const handleOpenDropdown = (event) => {
+		event.preventDefault()
+		/** @type {DOMRect} */
+		const rect = event.currentTarget.getBoundingClientRect()
+		setDropdownState({enabled: true, 
+			posY: rect.bottom + 8, 
+			posNegX: window.innerWidth - rect.right })
+	}
+
+	/** @param {MouseEvent} event */
+	const handleCloseDropdown = (event) => {
+		event.stopPropagation()
+		setDropdownState({...dropdownState, enabled: false})
+	}
 	useEffect(() => {
 		dispatch(fetchProjects())
 	}, [])
@@ -37,42 +54,63 @@ export default function ProjectTable({searchTerm}) {
 					{ownerName ?? 'test user'}
 				</span>
 			</td>
-			<td><MenuDots /></td>
+			<td>
+				<button onClick={handleOpenDropdown}>
+					<MenuDots />
+				</button>
+			</td>
 		</tr>
 	}
 
-	return <table>
-		<thead>
-			<tr>
-				<td>
-					<span className='starContainer'>
-						<HeaderStar />
-					</span>
-				</td>
-				<th>Name</th>
-				<th>Key</th>
-				<th>Type</th>
-				<th>Lead</th>
-				<th>More Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{
-				posts.map((post, i) => {
-					if(searchTerm) {
-						if(! post.title.toLowerCase()
+	return <>
+		<div id='projectDropdownContainer' 
+			onClick={handleCloseDropdown} 
+			hidden={!dropdownState.enabled}>
+			<div className='projectManagementDropdown'
+				//inline styles are not best practice. This is the minimum 
+				//required to make the functionality work.
+				style={{
+					top: dropdownState.posY,
+					right: dropdownState.posNegX
+				}}>
+				<a onClick>
+
+				</a>
+			</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<td>
+						<span className='starContainer'>
+							<HeaderStar />
+						</span>
+					</td>
+					<th>Name</th>
+					<th>Key</th>
+					<th>Type</th>
+					<th>Lead</th>
+					<th>More Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					posts.map((post, i) => {
+						if(searchTerm) {
+							if(! post.title.toLowerCase()
 							.includes(searchTerm.toLowerCase())) {
-							return <></>
+						return <></>
+					}
 						}
-					}
-					if (!users[post.ownerId]) {
-						dispatch(fetchUser(post.ownerId))
+						if (!users[post.ownerId]) {
+							dispatch(fetchUser(post.ownerId))
 							.then(generateTableRow(post, i))
-					} else {
-						return generateTableRow(post, i)
-					}
-				})
-			}
-		</tbody> 
-	</table>
+						} else {
+							return generateTableRow(post, i)
+						}
+					})
+				}
+			</tbody> 
+		</table>
+	</>
 }
