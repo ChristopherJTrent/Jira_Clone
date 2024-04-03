@@ -38,7 +38,9 @@ export const postProject = (project) => async dispatch => {
 	})
 	if (response.ok) {
 		return dispatch(receiveProject(await response.json()))
-	}
+	} 
+	return await response.json()
+	
 }
 
 

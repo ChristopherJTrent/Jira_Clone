@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react'
 import Jira from '../assets/jira-header.svg?react'
 import Kanban from '../assets/kanban.svg?react'
 import TeamManaged from '../assets/team-managed.svg?react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import './CreateProject.css'
+import { postProject } from '../store/reducers/projects.js'
 
 export default function CreateProject() {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const [name, setName] = useState('')
 	const [key, setKey] = useState('')
+	const [errors, setErrors] = useState()
 
 	useEffect(() => {
 		if(!name.trim().includes(' ')) {
@@ -21,6 +25,16 @@ export default function CreateProject() {
 				.toUpperCase())
 		}
 	}, [name])
+
+	const handleSubmit = () => {
+		dispatch(postProject({title: name, key})).then((v) => {
+			if(v.status === 500){
+				setErrors(`Cannot create project with duplicate title "${name}"`)
+			} else {
+				navigate('/projects')
+			}
+		})
+	}
 
 	const handleClose = (e) => {
 		e.stopPropagation()
@@ -93,8 +107,9 @@ export default function CreateProject() {
 				<hr />
 				<div id='bottomButtonContainer'>
 					<button id='cancelButton'>Cancel</button>
-					<button id='createProjectButton'>Next</button>
+					<button id='createProjectButton' onClick={handleSubmit}>Next</button>
 				</div>
+				<span className='red'>{errors}</span>
 			</div>
 		</div>
 	)
