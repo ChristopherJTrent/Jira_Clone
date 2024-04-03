@@ -4,8 +4,11 @@ module Api
   # controller responsible for serving projects
   class ProjectController < ApplicationController
     def index
-      @projects = current_user.associated_projects
-      render :index
+      if current_user
+        @projects = current_user.associated_projects
+        render :index
+      else 
+        render json: ['user is undefined.'], status: 403
     end
 
     def show
@@ -34,10 +37,10 @@ module Api
         project.destroy
         render json: :ok
       else
-        puts "user #{current_user.id} attempted to delete project #{p_id} owned by #{project&.owner_id}"
         render json: ['cannot delete another user\'s project'], status: 403
       end
     end
+
     private
 
     def project_params
