@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate, Outlet} from 'react-router-dom'
-import CreateProject from './pages/CreateProject.jsx'
+import CreateProject from './pages/Project/CreateProject.jsx'
 import Frontpage from './pages/frontpage.jsx'
-import Home from './pages/home.jsx'
+import Home from './pages/Project/home.jsx'
 import Layout from './layout.jsx'
 import Session from './pages/session.jsx'
 const router = createBrowserRouter([

@@ -1,4 +1,4 @@
-import ProjectTable from '../components/ProjectTable.jsx'
+import ProjectTable from '../../components/ProjectTable.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './home.css'

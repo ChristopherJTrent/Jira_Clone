@@ -37,14 +37,16 @@
 	height: 40px;
 	border-radius: 3px;
 	border: 1px solid #8590A2;
+	font-family: inherit;
 	& > input {
-
 		padding: 4px;
 		margin: 0px 2px;
 		box-sizing:border-box;
 		appearance: none;
 		border: none;
 		height: 28px;
+		font-size: 14px;
+		line-height: 1.42857;
 		&:active, &:focus-visible{
 			border: none;
 			box-shadow: none;

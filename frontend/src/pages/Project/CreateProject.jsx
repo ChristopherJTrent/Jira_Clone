@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import Jira from '../assets/jira-header.svg?react'
-import Kanban from '../assets/kanban.svg?react'
-import { postProject } from '../store/reducers/projects.js'
-import TeamManaged from '../assets/team-managed.svg?react'
+import Jira from '../../assets/jira-header.svg?react'
+import Kanban from '../../assets/kanban.svg?react'
+import { postProject } from '../../store/reducers/projects.js'
+import TeamManaged from '../../assets/team-managed.svg?react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import './CreateProject.css'
@@ -106,7 +106,7 @@ export default function CreateProject() {
 				</div>
 				<hr />
 				<div id='bottomButtonContainer'>
-					<button id='cancelButton' onClick={navigate(-1)}>Cancel</button>
+					<button id='cancelButton' onClick={() => navigate(-1)}>Cancel</button>
 					<button id='createProjectButton' onClick={handleSubmit}>Next</button>
 				</div>
 				<span className='red'>{errors}</span>
