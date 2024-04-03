@@ -1,0 +1,21 @@
+.modalBody {
+	width: 400px;
+	height: auto;
+	margin: 60px auto 0px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	& > h1 {
+		padding: 24px 24px 0px;
+		font-size: 20px;
+		font-weight: 500;
+	}
+	& p {
+		padding: 0px 24px;
+		font-size: 14px;
+	}
+	& #bottomButtonContainer {
+		display: inline-block;
+		margin: 24px  24px 24px auto;
+	}
+}

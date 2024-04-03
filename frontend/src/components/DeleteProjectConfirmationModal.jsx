@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProject } from '../store/reducers/projects.js'
+import './DeleteProjectConfirmationModal.css'
 
 export default function DeleteProjectConfirmationModal({enabled, setEnabled, post}) {
 	
@@ -23,14 +24,14 @@ export default function DeleteProjectConfirmationModal({enabled, setEnabled, pos
 			<h1>Delete Project?</h1>
 			<p>This project, along with its issues, components, attachments, and versions will be permanently deleted immediately.</p>
 			<p className="red">Deleted projects CANNOT be restored.</p>
-			<div id='bottomButtonContainer'>
-				<button onClick={() => setEnabled(false)}>
+			<span id='bottomButtonContainer'>
+				<button id='cancelButton' onClick={() => setEnabled(false)}>
 					Cancel
 				</button>
 				<button className='dangerButton' onClick={handleDelete}>
 					Delete
 				</button>
-			</div>
+			</span>
 		</div>
 	</div>
 }
