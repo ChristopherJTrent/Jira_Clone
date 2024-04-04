@@ -4,7 +4,6 @@ import './DeleteProjectConfirmationModal.css'
 
 export default function DeleteProjectConfirmationModal({enabled, setEnabled, post}) {
 	
-	 
 
 	const dispatch = useDispatch()
 	const currentUserId = useSelector(state => state.session.currentUserId)
