@@ -22,7 +22,7 @@ module Api
       parameters[:owner_id] ||= current_user.id
       @project = Project.new(parameters)
 
-      if @project.save
+      if (!parameters[:key].empty? && !parameters[:title].empty?) && @project.save
         render :show
       else
         render json: @project.errors.full_messages
@@ -30,9 +30,9 @@ module Api
     end
 
     def update
-       
+      invalid = params[:title].empty? || params[:key].empty?
       @project = Project.find_by(id: params[:id])
-      if @project
+      if @project && !invalid
         @project.update(project_params)
         render :show
       else
@@ -55,7 +55,7 @@ module Api
 
     def project_params
       params.require(:project)
-            .permit(:title, :key, :description, :owner_id)
+            .permit(:title, :key, :description, :owner_id, :id)
     end
   end
 end

@@ -13,6 +13,8 @@ export default function CreateProject() {
 	const [name, setName] = useState('')
 	const [key, setKey] = useState('')
 	const [errors, setErrors] = useState()
+	const [formValid, setFormValid] = useState(false)
+
 
 	useEffect(() => {
 		if(!name.trim().includes(' ')) {
@@ -26,14 +28,24 @@ export default function CreateProject() {
 		}
 	}, [name])
 
-	const handleSubmit = () => {
-		dispatch(postProject({title: name, key})).then((v) => {
-			if(v.status === 500){
-				setErrors(`Cannot create project with duplicate title "${name}"`)
-			} else {
-				navigate('/projects')
-			}
-		})
+	useEffect(() => {
+		if(name.length && key.length) {
+			setFormValid(true)
+		} else {
+			setFormValid(false)
+		}
+	}, [name, key])
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		if (formValid)
+			dispatch(postProject({title: name, key})).then((v) => {
+				if(v.status === 500){
+					setErrors(`Cannot create project with duplicate title "${name}"`)
+				} else {
+					navigate('/projects')
+				}
+			})
 	}
 
 	const handleClose = (e) => {
@@ -109,7 +121,7 @@ export default function CreateProject() {
 				<hr />
 				<div id='bottomButtonContainer'>
 					<button id='cancelButton' onClick={() => navigate(-1)}>Cancel</button>
-					<button id='createProjectButton' onClick={handleSubmit}>Next</button>
+					<button id='createProjectButton' disabled={!formValid} onClick={handleSubmit}>Next</button>
 				</div>
 				<span className='red'>{errors}</span>
 			</div>
