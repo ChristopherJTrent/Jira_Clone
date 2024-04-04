@@ -2,11 +2,30 @@
 
 # User model
 class User < ApplicationRecord
+
   has_secure_password
   before_validation :ensure_session_token
 
   validates :email, presence: true, uniqueness: true # , email: true
   validate :password_validator
+
+  has_many :projects,
+           inverse_of: 'owner',
+           dependent: :destroy
+  has_many :memberships
+  has_many :member_projects,
+           source: :project,
+           through: :memberships
+
+  def associated_projects
+    query = <<-SQL
+    SELECT projects.* FROM projects
+    LEFT JOIN memberships ON memberships.project_id = projects.id
+    LEFT JOIN users ON memberships.user_id = users.id
+    WHERE users.id = :user_id OR projects.owner_id = :user_id
+    SQL
+    Project.find_by_sql([query, { user_id: id }])
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email:)

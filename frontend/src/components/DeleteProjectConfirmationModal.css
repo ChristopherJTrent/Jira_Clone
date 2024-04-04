@@ -1,0 +1,36 @@
+.modalBody {
+	width: 400px;
+	height: auto;
+	margin: 60px auto 0px;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	border-radius: 3px;
+	box-shadow: 0px 8px 12px #091E4226, 0px 0px 1px #091E424F;
+	& > h1 {
+		padding: 24px 24px 0px;
+		font-size: 20px;
+		font-weight: 500;
+	}
+	& p {
+		padding: 0px 24px;
+		font-size: 14px;
+		font-family: inherit;
+		color: #172B4D;
+	}
+	& #bottomButtonContainer {
+		display: inline-block;
+		margin: 24px  24px 24px auto;
+	}
+}
+.dangerButton {
+	background-color: #C9372C;
+	color: white;
+	transition: background 0.1s ease-out, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+	border: none;
+	border-radius: 3px;
+	height: 100%;
+	padding: 0px 10px;
+	font-family: inherit;
+	font-weight: 500;
+}

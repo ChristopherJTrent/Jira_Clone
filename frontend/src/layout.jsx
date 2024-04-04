@@ -3,10 +3,13 @@ import { Outlet } from 'react-router-dom'
 import './layout.css'
 
 function Layout() {
+
 	return (
 		<>
 			<Navbar />
-			<Outlet />
+			<div id='contentContainer'>
+				<Outlet />
+			</div>
 		</>
 	)
 }

@@ -1,0 +1,8 @@
+:root {
+	--text-color-subtle: #172B4D;
+	--text-color-subtle-disabled: #d2d2d2;
+	--text-color-subtle-placeholder: #44546F;
+	--accent-bright: #0C66E4;
+	--accent-bright-hover: #05C;
+	--accent-bright-active: #09326C;
+}

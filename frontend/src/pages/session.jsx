@@ -9,7 +9,6 @@ import {useSelector} from 'react-redux'
 import './session.css'
 
 
-// eslint-disable-next-line react/prop-types
 export default function Session({type}) {
 	const [flowStage, setFlowStage] = useState(0)
 	const navigate = useNavigate()

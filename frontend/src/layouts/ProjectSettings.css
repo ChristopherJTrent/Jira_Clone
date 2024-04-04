@@ -1,0 +1,32 @@
+#pageContainer {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+#sidebarNav {
+	width: 12.5%;
+	height: 100%;
+}
+
+#settingsContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 24px;
+}
+#settingsCard {
+	margin: 0px auto;
+	width: 960px;
+	& h1 {
+		color: var(--text-color-subtle);
+		margin-block: 0px;
+		font-weight: 500;
+		font-size: 24px;
+	}
+}
+.fancyNav a:link {
+	text-decoration: none;
+	color: inherit;
+}

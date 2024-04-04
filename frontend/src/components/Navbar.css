@@ -1,19 +1,37 @@
+.navbarContainer {
+	
+	width: 100vw;
+	& > header {
+		padding: 0px 12px;
+		border-block-end: 1px solid #091E4224;
+	}
+}
+
 nav {
-	background-color: #f4f5f7;
 	display: flex;
 	justify-content: center;
 	& > ul {
 		display: flex;
 		flex-direction: row;
 		list-style-type: none;
-		height: 72px;
+		height: 56px;
 		margin: 0px;
 		align-items: center;
+		padding: 0px;
 		& > li {
 			height: min-content;
 			& > svg {
-				height: 32.85px;
+				&.productIcon{
+					height: 24px;
+					width: 135px;
+				}
 			}
 		}
+	}
+	& > #leftSegmentContainer {
+
+	}
+	& > #rightSegmentContainer {
+		margin-left: auto;
 	}
 }

@@ -32,6 +32,15 @@ export const createUser = (user) => async dispatch => {
 	}
 }
 
+export const fetchUser = (userId) => async dispatch => {
+	const response = await fetch(`/api/users/${userId}`)
+
+	if (response.ok) {
+		const data = await response.json()
+		return dispatch(receiveUser(data.user))
+	}
+}
+
 export default function userReducer(state = {}, action) {
 
 	switch (action.type) {
