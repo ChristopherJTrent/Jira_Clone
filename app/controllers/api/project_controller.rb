@@ -29,10 +29,19 @@ module Api
       end
     end
 
+    def update
+      puts 'in project update'
+      @project = Project.find_by(id: params[:id])
+      if @project
+        @project.update(project_params)
+        render :show
+      else
+        render json: ["project '#{params[:id]}' not found"], status: 404
+      end
+    end
+
     def destroy
-      puts params
       p_id = params[:id]
-      puts p_id
       project = Project.find_by(id: p_id)
       if project&.owner_id == current_user.id
         project.destroy

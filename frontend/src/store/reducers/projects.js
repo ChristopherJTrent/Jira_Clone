@@ -52,6 +52,17 @@ export const deleteProject = (projectId) => async dispatch => {
 	}
 }
 
+export const updateProject = (project) => async dispatch => {
+	const response = await csrfFetch(`/api/project/${project.id}`, {
+		method: 'PATCH',
+		body: JSON.stringify(project)
+	})
+	console.log(response)
+	if (response.ok) {
+		console.log(response)
+		return dispatch(receiveProject(await response.json()))
+	}
+}
 
 export default function projectsReducer(state = {}, action) {
 	switch(action.type) {

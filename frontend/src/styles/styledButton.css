@@ -10,6 +10,10 @@ button.styled {
 	&.cancel {
 		margin-right: 8px;
 		color: var(--text-color-subtle);
+		&:disabled {
+			cursor: not-allowed;
+			color: var(--text-color-subtle-disabled)
+		}
 	}
 	&.confirm {
 		background: var(--accent-bright);

@@ -1,14 +1,18 @@
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProjects } from '../store/reducers/projects.js'
 import './ProjectSettings.css'
 
 export default function ProjectSettings() {
+	const dispatch = useDispatch()
 	const projectId = useParams().projectId
 	const projects = useSelector(state => state.projects)
-	if(projects[projectId] == null) return <></>
 	
-	
-	return <div id='pageContainer'>
+	if(projects[projectId] == null) {
+		dispatch(fetchProjects())
+	}
+
+	const layout = <div id='pageContainer'>
 		<div id='sidebarNav'>
 			<NavLink to={`/projects/${projectId ?? 1}/settings/details`}>
 				Details
@@ -31,4 +35,9 @@ export default function ProjectSettings() {
 			</div>
 		</div>
 	</div>
+
+
+	
+	
+	return layout
 }
