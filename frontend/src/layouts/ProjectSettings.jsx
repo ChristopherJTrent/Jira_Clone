@@ -13,11 +13,12 @@ export default function ProjectSettings() {
 	}
 
 	const layout = <div id='pageContainer'>
-		<div id='sidebarNav'>
+		{/* TODO: create the memberships feature so there's a reason for this menu to exist.*/}
+		{/* {		<div id='sidebarNav' hidden=true>
 			<NavLink to={`/projects/${projectId ?? 1}/settings/details`}>
 				Details
 			</NavLink>
-		</div>
+		</div>} */}
 		<div id='settingsContainer'>
 			<div id='settingsCard'>
 				<div id='fancyNav'>
