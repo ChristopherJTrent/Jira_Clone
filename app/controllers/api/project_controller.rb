@@ -30,7 +30,7 @@ module Api
     end
 
     def update
-      puts 'in project update'
+       
       @project = Project.find_by(id: params[:id])
       if @project
         @project.update(project_params)

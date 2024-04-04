@@ -19,8 +19,6 @@ export default function UpdateProjectPage() {
 	const [key, setKey] = useState('')
 
 	useEffect(() => {
-		console.log(project)
-		con
 		if (project){
 			setName(project.title)
 			setKey(project.key)

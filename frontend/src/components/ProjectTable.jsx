@@ -31,7 +31,7 @@ export default function ProjectTable({searchTerm}) {
 			posY: rect.bottom + 8, 
 			posNegX: window.innerWidth - rect.right })
 		setDropdownPost(post)
-		console.log('inside handleOpenDropdown')
+		 
 	}
 
 	/** @param {MouseEvent} event */

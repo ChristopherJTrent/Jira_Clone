@@ -57,9 +57,9 @@ export const updateProject = (project) => async dispatch => {
 		method: 'PATCH',
 		body: JSON.stringify(project)
 	})
-	console.log(response)
+	 
 	if (response.ok) {
-		console.log(response)
+		 
 		return dispatch(receiveProject(await response.json()))
 	}
 }
