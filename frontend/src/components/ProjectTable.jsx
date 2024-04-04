@@ -91,7 +91,7 @@ export default function ProjectTable({searchTerm}) {
 				<a onClick={deleteModalHandler}>
 					Delete project
 				</a>
-				<Link to={`/projects/${dropdownPost?.id}/settings`}>Settings</Link>
+				<Link to={`/projects/${dropdownPost?.id}/settings/details`}>Settings</Link>
 			</div>
 		</div>
 		<table>
