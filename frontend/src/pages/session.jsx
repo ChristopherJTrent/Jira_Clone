@@ -6,7 +6,6 @@ import { useState } from 'react'
 import './session.css'
 
 
-// eslint-disable-next-line react/prop-types
 export default function Session({type}) {
 	const [flowStage, setFlowStage] = useState(0)
 

@@ -9,7 +9,6 @@ import PasswordValidatorDisplay from './passwordValidatorDisplay.jsx'
 import SlackIcon from '../assets/slack-logo.svg?react'
 import {useDispatch} from 'react-redux'
 import './SessionForm.css'
-// eslint-disable-next-line react/prop-types
 export default function SessionForm({type, flowStage, setFlowStage}) {
 
 	const dispatch = useDispatch()

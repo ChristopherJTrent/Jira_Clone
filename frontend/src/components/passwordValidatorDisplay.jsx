@@ -1,5 +1,4 @@
 import './passwordValidatorDisplay.css'
-// eslint-disable-next-line react/prop-types
 export default function PasswordValidatorDisplay({score}) {
 	const getClassForScore = () => {
 		if (score >= 6) return 'darkGreen'
