@@ -1,0 +1,26 @@
+button.styled {
+	border: none;
+	border-radius: 3px;
+	font-size: 14px;
+	height: 2.28571em;
+	font-weight: 500;
+	padding: 0px 10px;
+	transition: background 0.1s ease-out, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+	font-family: inherit;
+	&.cancel {
+		margin-right: 8px;
+		color: var(--text-color-subtle);
+	}
+	&.confirm {
+		background: var(--accent-bright);
+		color: white;
+		&:hover {
+			background-color: var(--accent-bright-hover);
+			transition-duration: 0s, 0.15s;
+		}
+		&:active {
+			background-color: var(--accent-bright-active);
+			transition-duration: 0s, 0s;
+		}
+	}
+}
