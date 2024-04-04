@@ -11,6 +11,7 @@ import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
 
 import './ProjectTable.css'
+import { Link } from 'react-router-dom'
 
 export default function ProjectTable({searchTerm}) {
 
@@ -90,6 +91,7 @@ export default function ProjectTable({searchTerm}) {
 				<a onClick={deleteModalHandler}>
 					Delete project
 				</a>
+				<Link to={`/projects/${dropdownPost?.id}/settings`}>Settings</Link>
 			</div>
 		</div>
 		<table>
