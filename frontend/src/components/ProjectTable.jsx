@@ -6,12 +6,12 @@ import DeleteProjectConfirmationModal from './DeleteProjectConfirmationModal.jsx
 import { fetchProjects } from '../store/reducers/projects.js'
 import { fetchUser } from '../store/reducers/user.js'
 import HeaderStar from '../assets/header-star.svg?react'
+import { Link } from 'react-router-dom'
 import MenuDots from '../assets/menu-dots.svg?react'
 import { projectSelector } from '../store/selectors/project.js'
 import Star from '../assets/star.svg?react'
 
 import './ProjectTable.css'
-import { Link } from 'react-router-dom'
 
 export default function ProjectTable({searchTerm}) {
 
@@ -31,7 +31,6 @@ export default function ProjectTable({searchTerm}) {
 			posY: rect.bottom + 8, 
 			posNegX: window.innerWidth - rect.right })
 		setDropdownPost(post)
-		 
 	}
 
 	/** @param {MouseEvent} event */
@@ -47,6 +46,7 @@ export default function ProjectTable({searchTerm}) {
 	}
 	useEffect(() => {
 		dispatch(fetchProjects())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const generateTableRow = (post, i) => {
