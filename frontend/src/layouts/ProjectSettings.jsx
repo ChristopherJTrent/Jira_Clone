@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
+import { Link, Outlet, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProjects } from '../store/reducers/projects.js'
 import './ProjectSettings.css'
