@@ -32,9 +32,9 @@ export default function UpdateProjectPage() {
 		</div>
 		<form className='styled'>
 			<label htmlFor="name">Name <span className='red'>*</span></label>
-			<input type="text" id='name' value={name ?? 'loading...'} onChange={e => setName(e.target.value)}/>
+			<input type="text" id='name' value={name ?? 'loading...'} onChange={e => setName(e.target.value)} required={true}/>
 			<label htmlFor="key">Key <span className='red'>*</span></label>
-			<input type='text' id='key' value={key ?? 'LD'} onChange={e => setKey(e.target.value.toUpperCase().slice(0,3))}/>
+			<input type='text' id='key' value={key ?? 'LD'} onChange={e => setKey(e.target.value.toUpperCase().slice(0,3))} required={true}/>
 			<button 
 				className='styled cancel'
 				onClick={(e) => {

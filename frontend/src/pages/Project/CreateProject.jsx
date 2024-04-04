@@ -60,6 +60,7 @@ export default function CreateProject() {
 								placeholder='Try a team name, project goal, milestone...'
 								value={name}
 								onChange={e => setName(e.target.value)}
+								required={true}
 							/>
 							<span>
 								<span className='bold'>Access</span>Only you may administer this project. Anyone you add as a member can access it.
@@ -69,6 +70,7 @@ export default function CreateProject() {
 								id='key'
 								value={key}
 								onChange={e => setKey(e.target.value.slice(0,3).toUpperCase())}
+								required={true}
 							/>
 						</form>
 					</div>
