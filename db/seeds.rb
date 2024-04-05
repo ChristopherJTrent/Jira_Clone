@@ -10,9 +10,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 ApplicationRecord.transaction do
-  [User, Project, Membership].each(&:destroy_all)
+  [User, Project, Membership, Epic].each(&:destroy_all)
 
-  %w[users projects memberships].each do |table_name|
+  %w[users projects memberships epics].each do |table_name|
     ApplicationRecord.connection.reset_pk_sequence!(table_name)
   end
   demo = User.create!(username: 'Demo User', email: 'demo@example.com', password: '1Demonstration!')
@@ -31,5 +31,9 @@ ApplicationRecord.transaction do
                                  key: 'TP',
                                  owner: test)
   Membership.create!(user: demo, project: test_project)
+
+  fe = Epic.create!(title: "test frontend", project_id: test_project.id)
+  mw = Epic.create!(title: "test middleware", project_id: test_project.id)
+  be = Epic.create!(title: "test backend", project_id: test_project.id)
 
 end
