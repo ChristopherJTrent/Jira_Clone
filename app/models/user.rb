@@ -27,6 +27,11 @@ class User < ApplicationRecord
     Project.find_by_sql([query, { user_id: id }])
   end
 
+  def associated_epics
+    Epic.where(project_id: associated_projects.reduce([]) do |acc, project|
+      acc << project.id
+    end)
+  end
   def self.find_by_credentials(email, password)
     user = User.find_by(email:)
     return unless user&.authenticate(password)
