@@ -1,1 +1,1 @@
-json.partial! 'api/project/project', collection: @projects, as: :projects
+json.partial! 'api/project/project', collection: @projects, as: :project
