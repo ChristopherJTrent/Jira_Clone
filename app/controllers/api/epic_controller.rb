@@ -1,5 +1,5 @@
 class Api::EpicController < ApplicationController
-
+	before_action :require_logged_in
 	def index
 		@epics = current_user.associated_epics
 		render :index
