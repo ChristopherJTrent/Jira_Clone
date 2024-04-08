@@ -6,6 +6,8 @@ import Layout from './layout.jsx'
 import ProjectSettings from './layouts/ProjectSettings.jsx'
 import Session from './pages/session.jsx'
 import UpdateProjectPage from './pages/Project/update.jsx'
+import ShowProjectPage from './pages/Project/show.jsx'
+import ProjectPage from './layouts/ProjectPage.jsx'
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -18,6 +20,16 @@ const router = createBrowserRouter([
 			{
 				path: 'projects',
 				element: <Home />,
+			},
+			{
+				path: 'projects/:projectId',
+				element: <ProjectPage />,
+				children: [
+					{
+						path: '',
+						element: <ShowProjectPage/>
+					}
+				]
 			},
 			{
 				path: 'projects/:projectId/settings',

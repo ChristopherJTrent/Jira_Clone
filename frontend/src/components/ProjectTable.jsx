@@ -57,7 +57,7 @@ export default function ProjectTable({searchTerm}) {
 					<Star />
 				</span>
 			</td>
-			<td>{post.title}</td>
+			<td><Link to={`/projects/${post.id}`}>{post.title}</Link></td>
 			<td>{post.key}</td>
 			<td>Team-managed software</td>
 			<td><AutogenProfile name={ownerName ?? 'test user'} /> 
