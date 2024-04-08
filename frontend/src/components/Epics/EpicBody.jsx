@@ -3,13 +3,22 @@
 export default function EpicBody({epic}) {
 	return <div className="tasksContainer">
 		<div className="todoContainer">
-			<ul></ul>
+			<ul>
+				{/* placeholder for list generator */}
+				<button>Add Issue</button>
+			</ul>
 		</div>
 		<div className="inProgressContainer">
-			<ul></ul>
+			<ul>
+				{/* placeholder for list generator */}
+				<button>Add Issue</button>
+			</ul>
 		</div>
 		<div className="doneContainer">
-			<ul></ul>
+			<ul>
+				{/* placeholder for list generator */}
+				<button>Add Issue</button>
+			</ul>
 		</div>
 	</div>
 }
