@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :projects,
            inverse_of: 'owner',
            dependent: :destroy
-  has_many :memberships
+  has_many :memberships,
+			dependent: :destroy
   has_many :member_projects,
            source: :project,
            through: :memberships
