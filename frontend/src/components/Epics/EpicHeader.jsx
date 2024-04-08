@@ -1,12 +1,14 @@
 import { useState } from "react"
 
-export default function EpicHeader({epic}) {
+export default function EpicHeader({epic, collapsed, setCollapsed}) {
 
-	const [collapsed, setCollapsed] = useState(false)
 
 	return <>
 	
-		<button>{collapsed ? "﹀" : "〉"}</button>
+		<button onClick={(e) => {
+			e.preventDefault()
+			setCollapsed(!collapsed)
+		}}>{collapsed ? "﹀" : "〉"}</button>
 		<button>
 			{epic.title}
 		</button>

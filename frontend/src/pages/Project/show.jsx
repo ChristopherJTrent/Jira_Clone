@@ -2,7 +2,7 @@ import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { selectEpicsForProject } from '../../store/selectors/epics'
 import { fetchEpics } from '../../store/reducers/epics'
-import EpicHeader from '../../components/Epics/EpicHeader'
+import Epic from '../../components/Epics/Epic'
 export default function ShowProjectPage() {
 	const dispatch = useDispatch()
 	const {projectId} = useParams()
@@ -26,7 +26,7 @@ export default function ShowProjectPage() {
 		</div>
 		<div id='kanbanBody'>
 			{
-				epics?.map((v, i) => <EpicHeader epic={v} key={i} />)
+				epics?.map((v, i) => <Epic epic={v} key={i} />)
 			}
 		</div>
 	</>
