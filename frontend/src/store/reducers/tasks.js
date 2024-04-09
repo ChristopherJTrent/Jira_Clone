@@ -10,7 +10,8 @@ export const mockTasks = () => ({
 			status: 'todo',
 			type: 'task',
 			parent_id: 1,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-1'
 		},
 		{
 			id: 2,
@@ -18,7 +19,8 @@ export const mockTasks = () => ({
 			status: 'in_progress',
 			type: 'task',
 			parent_id: 1,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-2',
 		},
 		{
 			id: 3,
@@ -26,7 +28,8 @@ export const mockTasks = () => ({
 			status: 'complete',
 			type: 'task',
 			parent_id: 1,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-3'
 		},
 		{
 			id: 4,
@@ -34,7 +37,8 @@ export const mockTasks = () => ({
 			status: 'todo',
 			type: 'task',
 			parent_id: 2,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-4'
 		},
 		{
 			id: 5,
@@ -42,7 +46,8 @@ export const mockTasks = () => ({
 			status: 'in_progress',
 			type: 'task',
 			parent_id: 2,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-5'
 		},
 		{
 			id: 6,
@@ -50,7 +55,8 @@ export const mockTasks = () => ({
 			status: 'complete',
 			type: 'task',
 			parent_id: 2,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-6'
 		},
 		{
 			id: 7,
@@ -58,7 +64,8 @@ export const mockTasks = () => ({
 			status: 'todo',
 			type: 'task',
 			parent_id: 3,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-7'
 		},
 		{
 			id: 8,
@@ -66,7 +73,8 @@ export const mockTasks = () => ({
 			status: 'in_progress',
 			type: 'task',
 			parent_id: 3,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-8'
 		},
 		{
 			id: 9,
@@ -74,7 +82,8 @@ export const mockTasks = () => ({
 			status: 'complete',
 			type: 'task',
 			parent_id: 3,
-			parent_type: 'epic'
+			parent_type: 'epic',
+			key: 'TP-9'
 		},
 	]
 })
