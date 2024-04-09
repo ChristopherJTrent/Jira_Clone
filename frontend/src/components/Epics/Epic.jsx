@@ -1,6 +1,6 @@
-import { useState } from "react";
-import EpicBody from "./EpicBody";
-import EpicHeader from "./EpicHeader";
+import EpicBody from './EpicBody'
+import EpicHeader from './EpicHeader'
+import { useState } from 'react'
 
 export default function Epic({epic}) {
 
