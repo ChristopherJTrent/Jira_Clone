@@ -5,14 +5,21 @@
 	& > div {
 		background-color: #F7F8F9;
 		border-radius: 3px;
-		width: 16.66665%;
+		width: 33%;
 		margin: 0px 6px;
 		& ul {
 			padding: 0px;
 			list-style-type: none;
-			& li {
-				margin: 0px;
-			}
 		}
 	}
+}
+
+.kanbanCard {
+	width: calc(100% - 10px);
+	margin: 4px 5px;
+	background-color: white;
+	border-radius: 3px;
+	box-shadow: 0px 1px 2px #00000033;
+	padding: 12px;
+	box-sizing: border-box;
 }
