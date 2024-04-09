@@ -28,6 +28,54 @@ export const mockTasks = () => ({
 			parent_id: 1,
 			parent_type: 'epic'
 		},
+		{
+			id: 4,
+			title: 'test epics',
+			status: 'todo',
+			type: 'task',
+			parent_id: 2,
+			parent_type: 'epic'
+		},
+		{
+			id: 5,
+			title: 'test project list',
+			status: 'in_progress',
+			type: 'task',
+			parent_id: 2,
+			parent_type: 'epic'
+		},
+		{
+			id: 6,
+			title: 'test login',
+			status: 'complete',
+			type: 'task',
+			parent_id: 2,
+			parent_type: 'epic'
+		},
+		{
+			id: 7,
+			title: 'test epics',
+			status: 'todo',
+			type: 'task',
+			parent_id: 3,
+			parent_type: 'epic'
+		},
+		{
+			id: 8,
+			title: 'test project list',
+			status: 'in_progress',
+			type: 'task',
+			parent_id: 3,
+			parent_type: 'epic'
+		},
+		{
+			id: 9,
+			title: 'test login',
+			status: 'complete',
+			type: 'task',
+			parent_id: 3,
+			parent_type: 'epic'
+		},
 	]
 })
 
