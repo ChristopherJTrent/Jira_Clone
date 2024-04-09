@@ -10,7 +10,7 @@ function generateTasks(tasks, status) {
 					{task.title}
 				</div>
 				<div>
-					<TaskIcon/>
+					<TaskIcon/> {task.key}
 				</div>
 			</li>)}
 	</>
