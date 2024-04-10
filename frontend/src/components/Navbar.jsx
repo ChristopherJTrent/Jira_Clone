@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import AppSelectorIcon from '../assets/app-selector-icon.svg?react'
 import AutogenProfile from './AutogenProfile.jsx'
@@ -27,7 +27,12 @@ export default function Navbar() {
 						<AppSelectorIcon className='appSelector'/>
 					</li>
 					<li>
-						<JiraHeader className='productIcon'/>
+						<Link to='/'>
+							<JiraHeader className='productIcon'/>
+						</Link>
+					</li>
+					<li>
+						<NavLink to='/projects'>Projects</NavLink>
 					</li>
 				</ul>
 				<ul id='rightSegmentContainer'>
