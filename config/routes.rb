@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :project, only: %i[index show create update destroy]
     delete 'session', to: 'session#destroy'
   end
+  get '*path', to: 'static_pages#frontend'
 end
