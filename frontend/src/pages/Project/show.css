@@ -1,0 +1,9 @@
+#kanbanHeader {
+	display: flex;
+	flex-direction: row;
+
+	& .headerCard {
+		width: 33%;
+		margin: 0px 6px;
+	}
+}

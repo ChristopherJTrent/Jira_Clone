@@ -13,6 +13,7 @@ function Layout() {
 		if (! currentUser) {
 			navigate('/')
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUser])
 
 	return (

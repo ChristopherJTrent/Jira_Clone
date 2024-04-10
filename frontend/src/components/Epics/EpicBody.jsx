@@ -17,25 +17,24 @@ function generateTasks(tasks, status) {
 }
 
 export default function EpicBody({tasks, collapsed}) {
-	console.log(tasks)
-	return <div className="tasksContainer">
+	return <div className={'tasksContainer' + (collapsed ? ' collapsed' : '')}>
 		<div className="todoContainer">
 			<ul>
 				{generateTasks(tasks, 'todo')}
-				<li><button className=''>Create Issue</button></li>
+				<li><button className='issueButton' disabled={true}>Create Issue</button></li>
 			</ul>
 		</div>
-		<div className="inProgressContainer">
+		<div className='inProgressContainer'>
 			<ul>
 				{generateTasks(tasks, 'in_progress')}
-				<li><button className=''>Create Issue</button></li>
+				<li><button className='issueButton' disabled={true}>Create Issue</button></li>
 			</ul>
 		</div>
-		<div className="doneContainer">
+		<div className='doneContainer'>
 			<ul>
 				{generateTasks(tasks, 'complete')}
 				<li>
-					<button className=''>Create Issue</button>
+					<button className='issueButton' disabled={true}>Create Issue</button>
 				</li>
 			</ul>
 		</div>

@@ -12,3 +12,12 @@ export const selectTasksForProject = projectId => createSelector(
 		Object.values(tasks).filter((task) => Object.values(epics).some((v) => task.parent_id === v.id))
 	)
 )
+
+export const groupTasksForProject = projectId => createSelector(
+	[selectTasksForProject(projectId)],
+	tasks => tasks.reduce((a, e) => {
+		const index = e.status === 'todo' ? 0 : e.status === 'in_progress' ? 1 : 2
+		a[index] = [...a[index], e]
+		return a
+	}, [[],[],[]])
+)
