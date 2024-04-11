@@ -1,11 +1,14 @@
 class Api::EpicController < ApplicationController
+	wrap_parameters include: Epic.attribute_names + ['projectId']
 	before_action :require_logged_in
 	def index
 		@epics = current_user.associated_epics
 		render :index
 	end
 	def create
-		@epic = Epic.new(epic_params)
+		epic_parameters = epic_params
+		print epic_parameters
+		@epic = Epic.new(epic_parameters)
 		if @epic.save
 			render :show
 		else

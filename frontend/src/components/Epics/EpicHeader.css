@@ -25,3 +25,26 @@
 	align-items: flex-start;
 	margin: 8px;
 }
+
+.epicTitle {
+	box-sizing: border-box;
+	&:disabled {
+		border: none;
+		background-color: inherit;
+		color: inherit;
+		padding: 3px 4px;
+	}
+}
+.editButton, .saveButton {
+	box-sizing: content-box;
+	line-height: 22px;
+	border: none;
+	width: 31px;
+	background-color: inherit;
+	border-radius: 3px;
+	margin: 0px 3px;
+	transition: background-color 0.15s;
+	&:hover {
+		background-color: #f7f8f9;
+	}
+}

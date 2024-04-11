@@ -1,10 +1,22 @@
 import Collapse from '../../assets/collapse-image.svg?react'
-import { useState } from "react"
+import { updateEpic } from '../../store/reducers/epics.js'
+import {useDispatch} from 'react-redux'
+import { useState } from 'react'
 import './EpicHeader.css'
 
 
 export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
+	const dispatch = useDispatch()
+	const [epicName, setEpicName] = useState(epic.title)
+	const [isEditingName, setIsEditingName] = useState(false)
 
+	const handleSubmit = e => {
+		e.preventDefault()
+		if (epic.title !== epicName) {
+			dispatch(updateEpic({...epic, title: epicName}))
+		}
+		setIsEditingName(false)
+	}
 
 	return <div className='kanbanHeader'>
 	
@@ -15,7 +27,17 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 			<Collapse />
 		</button>
 		<button className='titleButton'>
-			{epic.title} 
+			<input type='text'
+				className='epicTitle'
+				value={epicName}
+				onChange={e => setEpicName(e.target.value)}
+				disabled={!isEditingName}/>
+			{isEditingName && <button 
+				onClick={handleSubmit}
+				className='saveButton'>Save</button>
+				|| <button 
+					onClick={() => setIsEditingName(true)}
+					className='editButton'>🖉</button>}
 			<span className='issueDisplay'>
 				({`${tasks.length === 0 ? 
 					'no' : 

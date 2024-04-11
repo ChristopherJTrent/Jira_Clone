@@ -19,15 +19,16 @@ export default function ShowProjectPage() {
 	}
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		if (epicName.length < 3) {
 			return
-		} else {
-			dispatch(postEpic({title: epicName, projectId}))
 		}
+		dispatch(postEpic({title: epicName, projectId: Number(projectId)}))
+		setEpicName('')
+		setCreatingNewEpic(false)
 	}
 
-	return <>
+	return <div className='kanban'>
 		<div id='kanbanHeader'>
 			<div className='headerCard'>
 				TO DO {todo.length}
@@ -54,5 +55,5 @@ export default function ShowProjectPage() {
 				Create new Epic
 			</button>}
 		</div>
-	</>
+	</div>
 }

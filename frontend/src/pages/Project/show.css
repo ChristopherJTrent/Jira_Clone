@@ -7,6 +7,10 @@
 		margin: 0px 6px;
 	}
 }
+#kanbanBody {
+	overflow-y: scroll;
+	max-height: 85vh;
+}
 .epicCreationButton {
 	font-size: 14px;
 	background-color: #f7f8f9;
@@ -21,5 +25,19 @@
 	}
 	&:hover {
 		background-color: #f0f1f2;
+	}
+}
+
+.createEpicForm {
+	width: calc(100% - 10px);
+	font-size: 14px;
+	border: none;
+	background-color: #f7f8f9;
+	margin: 4px 5px;
+	height: 5vh;
+	display: flex;
+	flex-direction: row;
+	& > * {
+		flex-grow: 1;
 	}
 }
