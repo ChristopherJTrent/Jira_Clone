@@ -6,12 +6,15 @@ import { selectEpicsForProject } from '../../store/selectors/epics'
 import {useParams} from 'react-router-dom'
 import { useState } from 'react'
 import './show.css'
+import { getProjectById } from '../../store/selectors/project.js'
 export default function ShowProjectPage() {
 	const dispatch = useDispatch()
 	const {projectId} = useParams()
+	const project = useSelector(getProjectById(projectId))
 	const epics = useSelector(selectEpicsForProject(Number(projectId)))
 	const [creatingNewEpic, setCreatingNewEpic] = useState(false)
 	const [epicName, setEpicName] = useState('')
+	const currentUserId = useSelector(state => state.session.currentUserId)
 	// mock data until tasks are implemented.
 	const [todo, inProgress, done]= useSelector(groupTasksForProject(Number(projectId)))
 	if (! epics) {
@@ -44,7 +47,9 @@ export default function ShowProjectPage() {
 			{
 				epics?.map((v, i) => <Epic epic={v} key={i} />)
 			}
-			{creatingNewEpic && <form className='createEpicForm'>
+			{project.ownerId === currentUserId 
+			&& ((creatingNewEpic) 
+			&& <form className='createEpicForm'>
 				<input type="text" value={epicName}
 					onChange={(e) => setEpicName(e.target.value)} placeholder='New Epic Name'/>
 				<button className='styled cancel' type="reset" onClick={() => {setCreatingNewEpic(false); setEpicName('')}}>cancel</button>
@@ -53,7 +58,7 @@ export default function ShowProjectPage() {
 			||<button className='epicCreationButton'
 				onClick={() => setCreatingNewEpic(! creatingNewEpic)}>
 				Create new Epic
-			</button>}
+			</button>)}
 		</div>
 	</div>
 }
