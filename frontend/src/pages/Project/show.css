@@ -7,3 +7,19 @@
 		margin: 0px 6px;
 	}
 }
+.epicCreationButton {
+	font-size: 14px;
+	background-color: #f7f8f9;
+	border: none;
+	width: calc(100% - 10px);
+	margin: 4px 5px;
+	height: 5vh;
+	&::before {
+		content: '＋';
+		font-weight: 600;
+		margin-right: 3px
+	}
+	&:hover {
+		background-color: #f0f1f2;
+	}
+}
