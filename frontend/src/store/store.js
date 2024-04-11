@@ -1,14 +1,16 @@
 import { applyMiddleware, compose, legacy_createStore } from 'redux'
-import logger from 'redux-logger'
 import { receiveUser } from './reducers/user.js'
 import rootReducer from './reducers/root.js'
 import { setCurrentUser } from './reducers/session.js'
 import {thunk} from 'redux-thunk'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+let composeEnhancers = compose
+if (import.meta.env['MODE'] === 'development'){
+	composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+}
 
 
-const middleware = composeEnhancers(applyMiddleware(thunk, logger))
+const middleware = composeEnhancers(applyMiddleware(thunk))
 
 const configureStore = (initialState = {}) => {
 	const store = legacy_createStore(rootReducer, initialState, middleware)
