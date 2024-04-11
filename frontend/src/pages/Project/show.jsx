@@ -46,9 +46,9 @@ export default function ShowProjectPage() {
 			}
 			{creatingNewEpic && <form className='createEpicForm'>
 				<input type="text" value={epicName}
-					onChange={(e) => setEpicName(e.target.value)} />
-				<button type="reset" onClick={() => {setCreatingNewEpic(false); setEpicName('')}}>cancel</button>
-				<button onClick={handleSubmit}>Submit</button>
+					onChange={(e) => setEpicName(e.target.value)} placeholder='New Epic Name'/>
+				<button className='styled cancel' type="reset" onClick={() => {setCreatingNewEpic(false); setEpicName('')}}>cancel</button>
+				<button className='styled confirm' onClick={handleSubmit}>Submit</button>
 			</form>
 			||<button className='epicCreationButton'
 				onClick={() => setCreatingNewEpic(! creatingNewEpic)}>

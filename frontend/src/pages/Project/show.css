@@ -36,8 +36,17 @@
 	margin: 4px 5px;
 	height: 5vh;
 	display: flex;
+	box-sizing: border-box;
 	flex-direction: row;
+	box-shadow: none;
 	& > * {
 		flex-grow: 1;
+	}
+	& input {
+		background: white;
+		border: none;
+		height: 2.28571em;
+		margin-right: 8px;
+		border-radius: 3px;
 	}
 }

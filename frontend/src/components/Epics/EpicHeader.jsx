@@ -1,5 +1,5 @@
+import { deleteEpic, updateEpic } from '../../store/reducers/epics.js'
 import Collapse from '../../assets/collapse-image.svg?react'
-import { updateEpic } from '../../store/reducers/epics.js'
 import {useDispatch} from 'react-redux'
 import { useState } from 'react'
 import './EpicHeader.css'
@@ -9,6 +9,7 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 	const dispatch = useDispatch()
 	const [epicName, setEpicName] = useState(epic.title)
 	const [isEditingName, setIsEditingName] = useState(false)
+	const [modalState, setModalState] = useState({active: false})
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -18,8 +19,23 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 		setIsEditingName(false)
 	}
 
+	const handleDelete = e => {
+		e.preventDefault()
+		dispatch(deleteEpic(epic.id))
+	}
+
 	return <div className='kanbanHeader'>
-	
+		{modalState.active && <div className='modalContainer'>
+			<div className='modalBody'>
+				Are you sure you want to delete this epic &ldquo;{epic.title}&rdquo;? this action cannot be undone.
+				<div className='buttonContainer'>
+					<button className='styled cancel'
+						onClick={() => setModalState({...modalState, active: false})}>Cancel</button>
+					<button className='styled danger'
+						onClick={handleDelete}>Delete</button>
+				</div>
+			</div>
+		</div>}
 		<button onClick={(e) => {
 			e.preventDefault()
 			setCollapsed(!collapsed)
@@ -45,5 +61,11 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 			</span>
 			<span className='todoMarker'>TO DO</span>
 		</button>
+		<span className='floatRight'>
+			<button className='styled danger noBackground'
+				onClick={() => setModalState({...modalState, active: true})}>
+				Delete Epic
+			</button>
+		</span>
 	</div>
 }
