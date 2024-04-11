@@ -9,7 +9,7 @@ export const selectTasksForEpic = epicId => createSelector(
 export const selectTasksForProject = projectId => createSelector(
 	[state => state.tasks, selectEpicsForProject(projectId)],
 	(tasks, epics) => (
-		Object.values(tasks).filter((task) => Object.values(epics).some((v) => task.parent_id === v.id))
+		Object.values(tasks).filter((task) => Object.values(epics ?? {}).some((v) => task.parent_id === v.id))
 	)
 )
 
