@@ -30,9 +30,11 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 				Are you sure you want to delete this epic &ldquo;{epic.title}&rdquo;? this action cannot be undone.
 				<div className='buttonContainer'>
 					<button className='styled cancel'
-						onClick={() => setModalState({...modalState, active: false})}>Cancel</button>
+						onClick={() => setModalState({...modalState, active: false})}>Cancel
+					</button>
 					<button className='styled danger'
-						onClick={handleDelete}>Delete</button>
+						onClick={handleDelete}>Delete
+					</button>
 				</div>
 			</div>
 		</div>}
@@ -42,25 +44,26 @@ export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {
 		}} className={'collapseButton' + (collapsed ? ' collapsed' : '')}>
 			<Collapse />
 		</button>
-		<button className='titleButton'>
-			<input type='text'
-				className='epicTitle'
-				value={epicName}
-				onChange={e => setEpicName(e.target.value)}
-				disabled={!isEditingName}/>
-			{isEditingName && <button 
-				onClick={handleSubmit}
-				className='saveButton'>Save</button>
-				|| <button 
-					onClick={() => setIsEditingName(true)}
-					className='editButton'>🖉</button>}
-			<span className='issueDisplay'>
-				({`${tasks.length === 0 ? 
-					'no' : 
-					tasks.length} issue${tasks.length === 1 ? '' : 's'}`})
-			</span>
-			<span className='todoMarker'>TO DO</span>
-		</button>
+		<input type='text'
+			className='epicTitle'
+			value={epicName}
+			onChange={e => {
+				e.preventDefault()
+				setEpicName(e.target.value)
+			}}
+			disabled={!isEditingName}/>
+		{isEditingName && <button 
+			onClick={handleSubmit}
+			className='saveButton'>Save</button>
+			|| <button 
+				onClick={() => setIsEditingName(true)}
+				className='editButton'>🖉</button>}
+		<span className='issueDisplay'>
+			({`${tasks.length === 0 ? 
+				'no' : 
+				tasks.length} issue${tasks.length === 1 ? '' : 's'}`})
+		</span>
+		<span className='todoMarker'>TO DO</span>
 		<span className='floatRight'>
 			<button className='styled danger noBackground'
 				onClick={() => setModalState({...modalState, active: true})}>
