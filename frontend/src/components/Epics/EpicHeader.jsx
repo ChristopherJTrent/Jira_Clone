@@ -1,10 +1,10 @@
 import { deleteEpic, updateEpic } from '../../store/reducers/epics.js'
-import Collapse from '../../assets/collapse-image.svg?react'
 import {useDispatch, useSelector} from 'react-redux'
-import { useState } from 'react'
-import './EpicHeader.css'
+import Collapse from '../../assets/collapse-image.svg?react'
 import { selectParentOfEpic } from '../../store/selectors/epics.js'
 import useFocus from '../../utils/useFocus.js'
+import { useState } from 'react'
+import './EpicHeader.css'
 
 
 export default function EpicHeader({epic, collapsed, setCollapsed, tasks}) {

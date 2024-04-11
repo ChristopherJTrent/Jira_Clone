@@ -1,12 +1,12 @@
 import { fetchEpics, postEpic } from '../../store/reducers/epics'
 import {useDispatch, useSelector} from 'react-redux'
 import Epic from '../../components/Epics/Epic'
+import { getProjectById } from '../../store/selectors/project.js'
 import { groupTasksForProject } from '../../store/selectors/tasks.js'
 import { selectEpicsForProject } from '../../store/selectors/epics'
 import {useParams} from 'react-router-dom'
 import { useState } from 'react'
 import './show.css'
-import { getProjectById } from '../../store/selectors/project.js'
 export default function ShowProjectPage() {
 	const dispatch = useDispatch()
 	const {projectId} = useParams()
