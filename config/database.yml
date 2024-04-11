@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: jira_clone_production
-  username: jira_clone
-  password: <%= ENV["JIRA_CLONE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

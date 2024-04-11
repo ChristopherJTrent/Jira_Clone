@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :epic, only: %i[index create update destroy]
     delete 'session', to: 'session#destroy'
   end
+  get '*path', to: 'static_pages#frontend'
 end
