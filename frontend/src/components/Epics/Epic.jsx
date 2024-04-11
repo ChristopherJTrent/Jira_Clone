@@ -8,7 +8,7 @@ export default function Epic({epic}) {
 	const tasks = useSelector(selectTasksForEpic(epic.id)) ?? []
 	const [collapsed, setCollapsed] = useState(false)
 	const dispatch = useDispatch()
-	useEffect(() => {dispatch(mockTasks())}, [epic])
+	useEffect(() => {dispatch(mockTasks())}, [dispatch, epic])
 
 	return <>
 		<EpicHeader epic={epic} 

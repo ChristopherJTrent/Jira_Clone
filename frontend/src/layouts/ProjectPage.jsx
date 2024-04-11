@@ -1,12 +1,11 @@
-import { useParams, useNavigate, Outlet, Link } from "react-router-dom";
+import { Link, Outlet, useParams } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
-import { fetchProjects } from "../store/reducers/projects";
+import { fetchProjects } from '../store/reducers/projects'
 export default function ProjectPage() {
 
 	const dispatch = useDispatch()
 	const projectId = useParams().projectId
 	const projects = useSelector(state => state.projects)
-	const navigate = useNavigate()
 
 	if (projects == null || projects[projectId] == null) {
 		dispatch(fetchProjects())
