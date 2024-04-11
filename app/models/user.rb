@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :projects,
            inverse_of: 'owner',
            dependent: :destroy
-  has_many :memberships
+  has_many :memberships,
+			dependent: :destroy
   has_many :member_projects,
            source: :project,
            through: :memberships
@@ -27,6 +28,11 @@ class User < ApplicationRecord
     Project.find_by_sql([query, { user_id: id }])
   end
 
+  def associated_epics
+    Epic.where(project_id: associated_projects.reduce([]) do |acc, project|
+      acc << project.id
+    end)
+  end
   def self.find_by_credentials(email, password)
     user = User.find_by(email:)
     return unless user&.authenticate(password)

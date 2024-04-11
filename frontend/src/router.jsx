@@ -3,8 +3,10 @@ import CreateProject from './pages/Project/CreateProject.jsx'
 import Frontpage from './pages/frontpage.jsx'
 import Home from './pages/Project/home.jsx'
 import Layout from './layout.jsx'
+import ProjectPage from './layouts/ProjectPage.jsx'
 import ProjectSettings from './layouts/ProjectSettings.jsx'
 import Session from './pages/session.jsx'
+import ShowProjectPage from './pages/Project/show.jsx'
 import UpdateProjectPage from './pages/Project/update.jsx'
 const router = createBrowserRouter([
 	{
@@ -18,6 +20,16 @@ const router = createBrowserRouter([
 			{
 				path: 'projects',
 				element: <Home />,
+			},
+			{
+				path: 'projects/:projectId',
+				element: <ProjectPage />,
+				children: [
+					{
+						path: '',
+						element: <ShowProjectPage/>
+					}
+				]
 			},
 			{
 				path: 'projects/:projectId/settings',

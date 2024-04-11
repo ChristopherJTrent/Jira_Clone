@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_012323) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_165252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "epics", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "title"], name: "index_epics_on_project_id_and_title", unique: true
+    t.index ["project_id"], name: "index_epics_on_project_id"
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -46,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_012323) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "epics", "projects"
   add_foreign_key "memberships", "projects"
   add_foreign_key "memberships", "users"
   add_foreign_key "projects", "users", column: "owner_id"

@@ -1,0 +1,59 @@
+.collapseButton {
+	background-color: white;
+	border: none;
+	padding: 0px;
+	& svg {
+		width: 16px;
+		transform: rotate(90deg);
+		transition: all 0.15s;
+	}
+	&.collapsed svg {
+		transform: rotate(0deg);
+		transition: all 0.15s;
+	}
+}
+.titleButton {
+	background-color: white;
+	border: none;
+	text-align: left;
+	padding-top: 0px;
+}
+
+.kanbanHeader {
+	display: flex;
+	justify-content: left;
+	align-items: flex-start;
+	margin: 8px;
+}
+
+.epicTitle {
+	box-sizing: border-box;
+	&:disabled {
+		border: none;
+		background-color: inherit;
+		color: inherit;
+		padding: 3px 4px;
+	}
+}
+.editButton, .saveButton {
+	box-sizing: content-box;
+	line-height: 22px;
+	border: none;
+	width: 31px;
+	background-color: inherit;
+	border-radius: 3px;
+	margin: 0px 3px;
+	transition: background-color 0.15s;
+	&:hover {
+		background-color: #f7f8f9;
+	}
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: end;
+	padding: 3px 3px;
+}
+.floatRight{
+	margin-left: auto;
+}

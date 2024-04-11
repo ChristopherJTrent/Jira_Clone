@@ -27,4 +27,24 @@ button.styled {
 			transition-duration: 0s, 0s;
 		}
 	}
+	&.danger {
+		background: rgb(255, 0, 0);
+		color: white;
+		&:hover {
+			background-color: rgb(240, 0, 0);
+			transition-duration: 0s, 0.15s;
+		}
+		&:active {
+			background-color: rgb(225, 0, 0);
+			transition-duration: 0s, 0s;
+		}
+		&.noBackground {
+			background-color: inherit ;
+			color: red;
+			&:hover {
+				background-color: rgba(255, 0, 0, 0.1)
+				
+			}
+		}
+	}
 }

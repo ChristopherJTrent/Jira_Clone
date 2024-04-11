@@ -20,7 +20,10 @@ nav {
 		padding: 0px;
 		& > li {
 			height: min-content;
-			& > svg {
+			& > a:has(svg) {
+				height: 24px;
+			}
+			& svg {
 				&.productIcon{
 					height: 24px;
 					width: 135px;
@@ -29,7 +32,29 @@ nav {
 		}
 	}
 	& > #leftSegmentContainer {
-
+		& > li {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			box-sizing: border-box;
+			&:not(:first-of-type) {
+				margin-left: 8px;
+			}
+			&:has(> a.active) {
+				border-bottom: 3px solid rgb(12, 102, 228);
+			}
+			& a {
+				color: #393939;
+				font-size: 18px;
+				font-weight: 500;
+				&.active {
+					color: var(--accent-bright);
+				}
+			}
+			& a:link {
+				text-decoration: none;
+			}
+		}
 	}
 	& > #rightSegmentContainer {
 		margin-left: auto;
