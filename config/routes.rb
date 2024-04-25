@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
+    resources :health, only: %i[index]
     resources :users, only: %i[create show]
     resources :session, only: %i[index create]
     resources :project, only: %i[index show create update destroy]
