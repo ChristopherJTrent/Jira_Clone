@@ -31,9 +31,9 @@ export default function Navbar() {
 							<JiraHeader className='productIcon'/>
 						</Link>
 					</li>
-					<li>
+					{currentUserId && <li>
 						<NavLink to='/projects'>Projects</NavLink>
-					</li>
+					</li>}
 				</ul>
 				<ul id='rightSegmentContainer'>
 
