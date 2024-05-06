@@ -76,6 +76,10 @@ td {
 	}
 }
 
+.plainLink {
+	color: inherit;
+	text-decoration: none;
+}
 #projectDropdownContainer {
 	position: absolute;
 	top: 0px;
@@ -91,6 +95,7 @@ td {
 		flex-direction: column;
 		& a {
 			padding: 8px 16px;
+			cursor: pointer;
 			&:hover {
 				background-color: #091E420F;
 			}

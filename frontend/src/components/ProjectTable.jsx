@@ -88,10 +88,10 @@ export default function ProjectTable({searchTerm}) {
 					top: dropdownState.posY,
 					right: dropdownState.posNegX
 				}}>
-				<a onClick={deleteModalHandler}>
+				<a onClick={deleteModalHandler} className='red'>
 					Delete project
 				</a>
-				<Link to={`/projects/${dropdownPost?.id}/settings/details`}>Settings</Link>
+				<Link to={`/projects/${dropdownPost?.id}/settings/details`} className='plainLink'>Settings</Link>
 			</div>
 		</div>
 		<table>
